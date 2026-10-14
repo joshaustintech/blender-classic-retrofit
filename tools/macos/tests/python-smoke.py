@@ -1,9 +1,14 @@
 # Run through Blender's legacy CLI: blender -b scene.blend -P python-smoke.py
 import sys
+import os, math, zlib, struct, xml.parsers.expat
 import Blender
 from Blender import BGL, Mathutils, Scene
 assert sys.version_info[:2] == (2, 5)
 assert Blender.Get('version') == 245
+assert zlib.decompress(zlib.compress('native')) == 'native'
+assert math.sqrt(9) == 3
+if sys.platform == 'darwin' and '.app/Contents/MacOS/' in sys.executable:
+    assert '/Contents/Resources/python' in os.__file__, os.__file__
 
 vector = Mathutils.Vector(1.0, 2.0, 3.0)
 assert len(vector) == 3

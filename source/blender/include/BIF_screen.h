@@ -93,6 +93,9 @@ unsigned short extern_qread_ext(short *val, char *ascii);
 extern void markdirty_all(void); // also sets redraw event
 extern void markdirty_all_back(void);
 extern void markdirty_win_back(short winid);
+#ifdef __APPLE__
+void mainwindow_toggle_fullscreen(int fullscreen);
+#endif
 	
 void screen_swapbuffers(void);
 void set_debug_swapbuffers_ovveride(struct bScreen *sc, int mode);

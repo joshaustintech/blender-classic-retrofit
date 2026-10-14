@@ -1539,8 +1539,7 @@ void screenmain(void)
 	}
 }
 
-#if 0
-//#ifdef _WIN32	// FULLSCREEN
+#ifdef __APPLE__
 void mainwindow_toggle_fullscreen(int fullscreen)
 {
 	if (fullscreen) U.uiflag |= USER_FLIPFULLSCREEN;

@@ -107,17 +107,26 @@ IF(APPLE)
     COMMAND cp -R ${SOURCEDIR}/Contents/PkgInfo ${TARGETDIR}/blender.app/Contents/
     COMMAND cp -R ${SOURCEDIR}/Contents/Resources ${TARGETDIR}/blender.app/Contents/
     COMMAND cat ${SOURCEINFO} | sed s/VERSION/`cat ${CMAKE_SOURCE_DIR}/release/VERSION`/ | sed s/DATE/`date +'%Y-%b-%d'`/ > ${TARGETINFO}
-    COMMAND rm -Rf ${TARGETDIR}/blender.app/Contents/MacOS/.blender
-    COMMAND mkdir ${TARGETDIR}/blender.app/Contents/MacOS/.blender/
-    COMMAND cp ${CMAKE_SOURCE_DIR}/bin/.blender/.bfont.ttf ${TARGETDIR}/blender.app/Contents/MacOS/.blender/
-    COMMAND cp ${CMAKE_SOURCE_DIR}/bin/.blender/.Blanguages ${TARGETDIR}/blender.app/Contents/MacOS/.blender/
+    COMMAND rm -Rf ${TARGETDIR}/blender.app/Contents/MacOS/.blender ${TARGETDIR}/blender.app/Contents/Resources/blender-data
+    COMMAND mkdir ${TARGETDIR}/blender.app/Contents/Resources/blender-data/
+    COMMAND cp ${CMAKE_SOURCE_DIR}/bin/.blender/.bfont.ttf ${TARGETDIR}/blender.app/Contents/Resources/blender-data/
+    COMMAND cp ${CMAKE_SOURCE_DIR}/bin/.blender/.Blanguages ${TARGETDIR}/blender.app/Contents/Resources/blender-data/
     COMMAND cp -R ${CMAKE_SOURCE_DIR}/bin/.blender/locale ${TARGETDIR}/blender.app/Contents/Resources/
-    COMMAND cp -R ${CMAKE_SOURCE_DIR}/bin/.blender/locale ${TARGETDIR}/blender.app/Contents/MacOS/.blender/
+    COMMAND cp -R ${CMAKE_SOURCE_DIR}/bin/.blender/locale ${TARGETDIR}/blender.app/Contents/Resources/blender-data/
     COMMAND cp ${CMAKE_SOURCE_DIR}/bin/.blender/.Blanguages ${TARGETDIR}/blender.app/Contents/Resources/
-    COMMAND cp -R ${CMAKE_SOURCE_DIR}/release/scripts ${TARGETDIR}/blender.app/Contents/MacOS/.blender/
+    COMMAND cp -R ${CMAKE_SOURCE_DIR}/release/scripts ${TARGETDIR}/blender.app/Contents/Resources/blender-data/
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGETDIR}/blender.app/Contents/Resources/python/lib
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${BLENDER_DEPENDENCY_PREFIX}/lib/python2.5 ${TARGETDIR}/blender.app/Contents/Resources/python/lib/python2.5
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${BLENDER_DEPENDENCY_PREFIX}/share/blender-licenses ${TARGETDIR}/blender.app/Contents/Resources/licenses
+    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/release/text/GPL-license.txt ${CMAKE_SOURCE_DIR}/release/text/Python-license.txt ${CMAKE_SOURCE_DIR}/release/text/copyright.txt ${TARGETDIR}/blender.app/Contents/Resources/licenses/
+    COMMAND ${CMAKE_COMMAND} -E create_symlink ../Resources/blender-data ${TARGETDIR}/blender.app/Contents/MacOS/.blender
     COMMAND find ${TARGETDIR}/blender.app -name CVS -prune -exec rm -rf {} "\;"
     COMMAND find ${TARGETDIR}/blender.app -name CVS.sandboxinfo -prune -exec rm -rf {} "\;"
     COMMAND find ${TARGETDIR}/blender.app -name .DS_Store -prune -exec rm -rf {} "\;"
+    COMMAND ${PYTHON3_BINARY} ${CMAKE_SOURCE_DIR}/tools/macos/bundle-dependencies.py
+      $<TARGET_FILE:blender> ${BLENDER_DEPENDENCY_PREFIX}/lib ${SDL_LIBRARY_DIR} ${TIFF_LIBRARY_DIR}
+      --module-dir ${TARGETDIR}/blender.app/Contents/Resources/python
+      --extra ${TIFF_LIBRARY} --extra ${BLENDER_DEPENDENCY_PREFIX}/lib/libSDL2-2.0.0.dylib
   )
 ENDIF(APPLE)
 

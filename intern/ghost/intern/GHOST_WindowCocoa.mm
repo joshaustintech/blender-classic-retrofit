@@ -607,18 +607,23 @@ GHOST_TSuccess GHOST_WindowCocoa::setState(GHOST_TWindowState state)
 				//This status change needs to be done before Cocoa call to enter fullscreen mode
 				//to give window delegate hint not to forward its deactivation to ghost wm that doesn't know view/window difference
 				m_fullScreen = true;
+				m_normalFrame = [m_window frame];
 
 #ifdef MAC_OS_X_VERSION_10_6
 				//10.6 provides Cocoa functions to autoshow menu bar, and to change a window style
 				//Hide menu & dock if needed
 				if ([[m_window screen] isEqual:[NSScreen mainScreen]])
 				{
-					[NSApp setPresentationOptions:(NSApplicationPresentationHideDock | NSApplicationPresentationAutoHideMenuBar)];
+					/* Keep Blender's top-row fullscreen control accessible. */
+					[NSApp setPresentationOptions:(NSApplicationPresentationHideDock | NSApplicationPresentationHideMenuBar)];
 				}
 				//Make window borderless and enlarge it
 				[m_window setStyleMask:NSBorderlessWindowMask];
 				[m_window setFrame:[[m_window screen] frame] display:YES];
 				[m_window makeFirstResponder:m_openGLView];
+				updateDrawingContext();
+				activateDrawingContext();
+				[m_openGLView setNeedsDisplay:YES];
 #else
 				//With 10.5, we need to create a new window to change its style to borderless
 				//Hide menu & dock if needed
@@ -674,10 +679,15 @@ GHOST_TSuccess GHOST_WindowCocoa::setState(GHOST_TWindowState state)
 					[NSApp setPresentationOptions:NSApplicationPresentationDefault];
 				}
 				//Make window normal and resize it
+				NSString *title = [[m_window title] copy];
 				[m_window setStyleMask:(NSTitledWindowMask | NSClosableWindowMask | NSMiniaturizableWindowMask | NSResizableWindowMask)];
-				[m_window setFrame:[[m_window screen] visibleFrame] display:YES];
-				//TODO for 10.6 only : window title is forgotten after the style change
+				[m_window setTitle:title];
+				[title release];
+				[m_window setFrame:m_normalFrame display:YES];
 				[m_window makeFirstResponder:m_openGLView];
+				updateDrawingContext();
+				activateDrawingContext();
+				[m_openGLView setNeedsDisplay:YES];
 #else
 				//With 10.5, we need to create a new window to change its style to borderless
 				//Show menu & dock if needed

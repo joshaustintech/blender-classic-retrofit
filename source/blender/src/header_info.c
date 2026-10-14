@@ -2095,14 +2095,13 @@ BIF_SetScale(block->aspect);
 	/* always do as last */
 	curarea->headbutlen= xco+2*XIC;
 
-#if 0
-// #ifdef _WIN32	// FULLSCREEN
+#ifdef __APPLE__
 	if(U.uiflag & USER_FLIPFULLSCREEN) {
 		uiDefIconBut(block, BUT, B_FLIPFULLSCREEN, ICON_WINDOW_WINDOW,
 				(short)(curarea->winx-XIC-5), 0,XIC,YIC,
 				0, 0, 0, 0, 0, "Toggles Blender to fullscreen mode");/* dir		*/
 	} else {
-		uiDefIconBut(block, BUT, B_FLIPFULLSCREEN, ICON_WINDOW_FULLSCREEN,
+		uiDefIconBut(block, BUT, B_FLIPFULLSCREEN, ICON_FULLSCREEN,
 				(short)(curarea->winx-XIC-5), 0,XIC,YIC,
 				0, 0, 0, 0, 0, "Toggles Blender to fullscreen mode");/* dir		*/
 	}

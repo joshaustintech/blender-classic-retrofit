@@ -42,6 +42,23 @@ int main()
 	CHECK(window->setDrawingContextType(GHOST_kDrawingContextTypeNone) == GHOST_kSuccess);
 	CHECK(window->setDrawingContextType(GHOST_kDrawingContextTypeOpenGL) == GHOST_kSuccess);
 	CHECK(window->activateDrawingContext() == GHOST_kSuccess);
+	for (int cycle = 0; cycle < 5; ++cycle) {
+		CHECK(window->setState(GHOST_kWindowStateFullScreen) == GHOST_kSuccess);
+		CHECK(window->getState() == GHOST_kWindowStateFullScreen);
+		CHECK(window->activateDrawingContext() == GHOST_kSuccess);
+		glClearColor(17.0f / 255, 34.0f / 255, 51.0f / 255, 1);
+		glClear(GL_COLOR_BUFFER_BIT);
+		glReadPixels(10, 10, 1, 1, GL_RGBA, GL_UNSIGNED_BYTE, pixel);
+		CHECK(pixel[0] == 17 && pixel[1] == 34 && pixel[2] == 51);
+		CHECK(window->swapBuffers() == GHOST_kSuccess);
+		CHECK(window->setState(GHOST_kWindowStateNormal) == GHOST_kSuccess);
+		window->getClientBounds(bounds);
+		CHECK(bounds.getWidth() == 800 && bounds.getHeight() == 600);
+		STR_String title;
+		window->getTitle(title);
+		CHECK(title == STR_String("Blender native adapter check"));
+		CHECK(glGetError() == GL_NO_ERROR);
+	}
 	CHECK(system->disposeWindow(window) == GHOST_kSuccess);
 	GHOST_DisplaySetting setting;
 	system->getMainDisplayDimensions(setting.xPixels, setting.yPixels);

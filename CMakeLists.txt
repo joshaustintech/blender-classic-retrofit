@@ -352,4 +352,9 @@ IF(BUILD_TESTING AND APPLE)
   ADD_TEST(NAME python_legacy COMMAND ${CMAKE_COMMAND}
     -DBLENDER_EXECUTABLE=$<TARGET_FILE:blender> -DSOURCE_ROOT=${CMAKE_SOURCE_DIR}
     -P ${CMAKE_SOURCE_DIR}/tools/macos/tests/python-smoke.cmake)
+  ADD_TEST(NAME tiff_native COMMAND ${CMAKE_COMMAND}
+    -DBLENDER_EXECUTABLE=$<TARGET_FILE:blender> -DSOURCE_ROOT=${CMAKE_SOURCE_DIR}
+    -DTEST_SCRIPT=${CMAKE_SOURCE_DIR}/tools/macos/tests/tiff-smoke.py
+    -DTEST_MARKER=NATIVE_TIFF_PASS:
+    -P ${CMAKE_SOURCE_DIR}/tools/macos/tests/python-smoke.cmake)
 ENDIF()

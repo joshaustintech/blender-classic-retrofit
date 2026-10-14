@@ -275,6 +275,7 @@ protected:
     
  	/** The window containing the OpenGL view */
     CocoaWindow *m_window;
+	NSRect m_normalFrame;
 	
 	/** The openGL view */
 	NSOpenGLView *m_openGLView; 

@@ -765,8 +765,7 @@ void window_raise(Window *win) {
 #endif
 }
 
-#if 0
-//#ifdef _WIN32	//FULLSCREEN
+#ifdef __APPLE__
 void window_toggle_fullscreen(Window *win, int fullscreen) {
 	/* these two lines make sure front and backbuffer are equal. for swapbuffers */
 	markdirty_all();
@@ -774,8 +773,15 @@ void window_toggle_fullscreen(Window *win, int fullscreen) {
 
 	if(fullscreen)
 		GHOST_SetWindowState(win->ghostwin, GHOST_kWindowStateFullScreen);
-	else
+	else {
+#ifdef __APPLE__
+		GHOST_SetWindowState(win->ghostwin, GHOST_kWindowStateNormal);
+#else
 		GHOST_SetWindowState(win->ghostwin, GHOST_kWindowStateMaximized);
+	#endif
+	}
+	markdirty_all();
+	window_queue_redraw(win);
 }
 #endif
 

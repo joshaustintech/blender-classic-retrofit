@@ -31,13 +31,24 @@ done
   make install
   "$retrofit_prefix/bin/python2.5" -c 'import sys, math, zlib, xml.parsers.expat; assert sys.version_info[:2] == (2, 5); assert zlib.decompress(zlib.compress("native")) == "native"; print sys.version'
 )
-cmake -S "$retrofit_sources/freetype-2.13.3" -B "$retrofit_root/freetype-build" -DCMAKE_INSTALL_PREFIX="$retrofit_prefix" -DFT_DISABLE_HARFBUZZ=ON -DFT_DISABLE_BROTLI=ON -DBUILD_SHARED_LIBS=OFF
+cmake -S "$retrofit_sources/freetype-2.13.3" -B "$retrofit_root/freetype-build" -DCMAKE_INSTALL_PREFIX="$retrofit_prefix" -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=arm64 -DFT_DISABLE_HARFBUZZ=ON -DFT_DISABLE_BROTLI=ON -DBUILD_SHARED_LIBS=OFF
 cmake --build "$retrofit_root/freetype-build" --parallel "$retrofit_jobs"
 cmake --install "$retrofit_root/freetype-build"
-cmake -S "$retrofit_sources/SDL2-2.32.10" -B "$retrofit_root/sdl2-build" -DCMAKE_INSTALL_PREFIX="$retrofit_prefix" -DSDL_STATIC=OFF -DSDL_TEST=OFF
+cmake -S "$retrofit_sources/SDL2-2.32.10" -B "$retrofit_root/sdl2-build" -DCMAKE_INSTALL_PREFIX="$retrofit_prefix" -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=arm64 -DSDL_STATIC=ON -DSDL_SHARED=ON -DSDL_TEST=OFF
 cmake --build "$retrofit_root/sdl2-build" --parallel "$retrofit_jobs"
 cmake --install "$retrofit_root/sdl2-build"
-cmake -S "$retrofit_sources/sdl12-compat-release-1.2.68" -B "$retrofit_root/sdl12-build" -DCMAKE_INSTALL_PREFIX="$retrofit_prefix" -DCMAKE_PREFIX_PATH="$retrofit_prefix" -DSDL12TESTS=OFF
+cmake -S "$retrofit_sources/sdl12-compat-release-1.2.68" -B "$retrofit_root/sdl12-build" -DCMAKE_INSTALL_PREFIX="$retrofit_prefix" -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_PREFIX_PATH="$retrofit_prefix" -DSDL12TESTS=OFF
 cmake --build "$retrofit_root/sdl12-build" --parallel "$retrofit_jobs"
 cmake --install "$retrofit_root/sdl12-build"
 file "$retrofit_prefix/bin/python2.5" "$retrofit_prefix/lib/libSDL-1.2.0.dylib" "$retrofit_prefix/lib/libSDL2-2.0.dylib"
+retrofit_licenses="$retrofit_prefix/share/blender-licenses"
+mkdir -p "$retrofit_licenses"
+cp "$retrofit_sources/SDL2-2.32.10/LICENSE.txt" "$retrofit_licenses/SDL2.txt"
+cp "$retrofit_sources/sdl12-compat-release-1.2.68/LICENSE.txt" "$retrofit_licenses/SDL12-compat.txt"
+cp "$retrofit_sources/freetype-2.13.3/docs/FTL.TXT" "$retrofit_licenses/FreeType.txt"
+cp /opt/homebrew/opt/jpeg-turbo/share/doc/libjpeg-turbo/LICENSE.md "$retrofit_licenses/JPEG.md"
+cp /opt/homebrew/opt/libtiff/share/doc/tiff-*/LICENSE.md "$retrofit_licenses/TIFF.md"
+cp /opt/homebrew/opt/xz/share/doc/xz/COPYING "$retrofit_licenses/XZ.txt"
+cp /opt/homebrew/opt/zstd/LICENSE "$retrofit_licenses/Zstd.txt"
+cp /opt/homebrew/opt/libpng/LICENSE "$retrofit_licenses/PNG.txt"
+cp /opt/homebrew/opt/gettext/COPYING "$retrofit_licenses/Gettext.txt"

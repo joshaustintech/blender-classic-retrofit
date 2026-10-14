@@ -1,0 +1,17 @@
+#!/bin/bash
+# Package an existing native build; output must be a new directory.
+set -eu
+retrofit_app=${1:?Usage: package-release build/blender.app output-directory}
+retrofit_output=${2:?Usage: package-release build/blender.app output-directory}
+mkdir -p "$retrofit_output"
+test ! -e "$retrofit_output/Blender.app"
+ditto "$retrofit_app" "$retrofit_output/Blender.app"
+retrofit_bundle="$retrofit_output/Blender.app"
+# .blender is legacy runtime data, not a nested code bundle.
+test -L "$retrofit_bundle/Contents/MacOS/.blender"
+strip -x "$retrofit_bundle/Contents/MacOS/blender"
+find "$retrofit_bundle" -type f \( -name '*.dylib' -o -name '*.so' \) -exec codesign --force --sign - {} \;
+codesign --force --sign - "$retrofit_bundle"
+codesign --verify --deep --strict "$retrofit_bundle"
+ditto -c -k --keepParent "$retrofit_bundle" "$retrofit_output/Blender-2.45-macOS-arm64.zip"
+(cd "$retrofit_output" && shasum -a 256 Blender-2.45-macOS-arm64.zip > SHA256SUMS)

@@ -510,7 +510,6 @@ GHOST_SystemCocoa::GHOST_SystemCocoa()
 	m_needDelayedApplicationBecomeActiveEventProcessing = false;
 	m_displayManager = new GHOST_DisplayManagerCocoa ();
 	GHOST_ASSERT(m_displayManager, "GHOST_SystemCocoa::GHOST_SystemCocoa(): m_displayManager==0\n");
-	m_displayManager->initialize();
 
 	//NSEvent timeStamp is given in system uptime, state start date is boot time
 	mib[0] = CTL_KERN;
@@ -559,6 +558,7 @@ GHOST_TSuccess GHOST_SystemCocoa::init()
 		
 		NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 		if (NSApp == nil) {
+			NSApplicationLoad();
 			[NSApplication sharedApplication];
 			[NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
 			
@@ -624,6 +624,7 @@ GHOST_TSuccess GHOST_SystemCocoa::init()
 		[NSApp finishLaunching];
 		
 		[pool drain];
+		m_displayManager->initialize();
     }
     return success;
 }

@@ -188,6 +188,19 @@ void BPY_start_python( int argc, char **argv )
 	if( !bpy_registryDict )
 		printf( "Error: Couldn't create the Registry Python Dictionary!" );
 	Py_SetProgramName( "blender" );
+#ifdef __APPLE__
+	/* Use the packaged standard library rather than the build machine's prefix. */
+	{
+		static char python_home[FILE_MAXDIR];
+		char *slash = BLI_last_slash(bprogname);
+		if (slash) {
+			int size = snprintf(python_home, sizeof(python_home),
+				"%.*s/../Resources/python", (int)(slash - bprogname), bprogname);
+			if (size > 0 && size < sizeof(python_home) && BLI_exists(python_home))
+				Py_SetPythonHome(python_home);
+		}
+	}
+#endif
 
 	/* Py_Initialize() will attempt to import the site module and
 	 * print an error if not found.  See init_syspath() for the
