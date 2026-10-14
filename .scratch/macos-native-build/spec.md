@@ -6,16 +6,17 @@ Plan status: accepted by the user through `grill-with-docs` on 2026-10-13. Imple
 
 ## Outcome
 
-A reproducible native Apple Silicon build of Blender 2.45 that launches on the developer's macOS environment, preserves all reference-release features and Blender-owned UX, and produces verified Blender Internal renders from both the GUI and command line. A linked executable, a graphics probe, or a render-only build is insufficient.
+A reproducible native Apple Silicon build of Blender 2.45 that launches on the developer's macOS environment, preserves supported reference-release features and Blender-owned UX, and produces verified Blender Internal renders from both the GUI and command line. The Game Engine/player are excluded; Blender's embedded Python scripting remains supported with bundled Python 2.5.6. A linked executable, a graphics probe, or a render-only build is insufficient.
 
 Initial target: the current M1 Pro/macOS 27.0.1 environment. Additional platform support, distribution signing, renderer enhancements, and performance backports follow this milestone.
 
 ## Accepted implementation choices
 
-- Keep application UI, scene model, original renderer, render settings, and legacy Python API. Adapt platform and dependency boundaries rather than importing a newer Blender application.
+- Keep application UI, scene model, original renderer, render settings, and legacy Python API. Build without the Game Engine/player. Adapt platform and dependency boundaries rather than importing a newer Blender application.
 - Modernize the existing CMake build. Pin compiler settings, SDK, dependency source hashes, patches, and runtime assets. Use isolated build/dependency directories; leave the developer's Python installations and preferences intact.
 - Use Cocoa behind the existing GHOST interface with a legacy OpenGL context. Audit mature upstream Cocoa code before reuse; preserve the 2.45 event/coordinate contract. Native legacy OpenGL has passed an independent offscreen capability probe.
-- Preserve the Python 2.5 behavior baseline. First prove a compatible native legacy runtime; do not substitute Python 3 or modern `bpy` APIs. Restore the reference scripts and resources only after manifest/difference review.
+- Preserve the Python 2.5 behavior baseline with bundled Python 2.5.6 built from pinned source; do not require a separately installed system Python, substitute Python 3, or use modern `bpy` APIs. Keep embedded scripting and restore the reference scripts/resources only after manifest/difference review.
+- Prefer static linking for dependencies when supported. Keep unavoidable dynamic dependencies explicit, verify actual runtime linkage, and avoid claiming independence from installed dependencies unless the packaged build demonstrates it.
 - Replace obsolete platform services only where needed, keeping original controls, formats, and semantics. QuickTime/SDL replacements must demonstrate equivalent behavior; missing codecs or CD functionality remain explicit parity failures.
 - Keep Rust and opportunistic performance/stability work out of the baseline port. Later candidates require independent profiling or defect reproduction, upstream provenance, regression coverage, and unchanged outputs/UX. Rust remains optional, safe, and standard-library-only; a candidate requiring unsafe Rust does not meet that constraint.
 
@@ -33,7 +34,7 @@ Capture clean-account startup, screenshots, interactions, scripts, scene files, 
 
 ### 1. Prove dependencies and repair build configuration
 
-Make CMake work with the installed toolchain, declare appropriate language standards, and correct genuine compiler/API errors. Build native dependencies in the isolated prefix, including Python, fonts/translations, image formats, and audio. Preserve game engine, player, physics, fluid simulation, and original enabled integrations. Confirm architecture with `file`/`lipo` and actual dependency resolution with `otool`.
+Make CMake work with the installed toolchain, declare appropriate language standards, and correct genuine compiler/API errors. Build native dependencies in the isolated prefix, including Python 2.5.6, fonts/translations, image formats, and audio. Disable the Game Engine/player while preserving unrelated integrations that still build without them. Prefer static dependencies where supported. Confirm architecture with `file`/`lipo` and actual dependency resolution with `otool`.
 
 Compile and run existing standalone module checks where relevant, including guarded allocation. Do not treat error suppression, silent feature disabling, or mixed Intel/ARM libraries as a build repair.
 
@@ -63,17 +64,17 @@ Repeat at relevant thread counts and with repeated runs. Capture timing and memo
 
 ### 4. Close feature and packaging parity
 
-Finish original enabled image/movie/audio formats, codecs, bundled import/export scripts, player/game engine, simulation features, translations, and shipped plugin source builds. Recompile native plugins while preserving their exposed contracts; Intel plugin binaries cannot be used as native ARM substitutes. Retain original UI options and prove their outputs rather than removing unsupported entries.
+Finish original enabled image/movie/audio formats, codecs, bundled import/export scripts, translations, and shipped plugin source builds. Recompile native plugins while preserving their exposed contracts; Intel plugin binaries cannot be used as native ARM substitutes. Game Engine/player and engine-only simulation checks are outside this build's scope. Retain other original UI options and prove their outputs rather than removing unsupported entries.
 
-Package the app, player, runtime/dependencies, scripts, resources, and licenses using verified manifests. Test startup and dependency discovery in a clean test account without relying on the developer's installed Python or saved preferences.
+Package the app, runtime/dependencies, bundled Python 2.5.6, scripts, resources, and licenses using verified manifests. Test startup and dependency discovery in a clean test account without relying on the developer's installed Python or saved preferences. Do not package a Game Engine/player target.
 
 **Gate:** every preservation-matrix row passes against the actual packaged artifacts. Any missing reference feature leaves the milestone incomplete.
 
 ### 5. Run the complete acceptance gate
 
-From a documented fresh build directory, reproduce the build and run all module, file round-trip, scripting, format, game-engine, simulation, UI, and rendering checks. Include resize/focus/fullscreen, repeated render/cancel, and repeated save/reopen stress cases. Use sanitizers where supported to investigate port-induced memory/undefined-behavior defects; record any diagnostic limitations.
+From a documented fresh build directory, reproduce the build and run all applicable module, file round-trip, Python scripting, format, UI, and rendering checks. Verify the Game Engine/player are disabled and Python 2.5.6 plus scripts are packaged and usable without system Python. Include resize/focus/fullscreen, repeated render/cancel, and repeated save/reopen stress cases. Use sanitizers where supported to investigate port-induced memory/undefined-behavior defects; record any diagnostic limitations.
 
-**Gate:** native app/player architecture, real GUI launch and screenshots, foreground/background rendering receipts, fixed-tolerance comparison reports, complete resource/feature manifest, passing workflow checks, and reproducible commands. Clearly distinguish reference evidence, host capability probes, native module checks, and full application evidence.
+**Gate:** native app architecture, real GUI launch and screenshots, foreground/background rendering receipts, fixed-tolerance comparison reports, complete in-scope resource/feature manifest, passing workflow checks, and reproducible commands. Clearly distinguish reference evidence, host capability probes, native module checks, and full application evidence.
 
 ## Stop conditions and unresolved facts
 

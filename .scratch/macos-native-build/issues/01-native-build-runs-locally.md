@@ -9,7 +9,7 @@ Created: 2026-10-13
 
 ## Request and settled context
 
-Produce a native macOS build that runs locally without crashing. The accepted [build plan](../spec.md), domain glossary, and ADRs retain authority: official Intel/Python 2.5 reference, every shipped feature, original Blender-owned UI with current OS chrome, and strict render tolerances locked before porting. Rust/performance enhancements follow the working baseline.
+Produce a native macOS build that runs locally without crashing. Build Blender without the Game Engine/player and bundle Python 2.5.6 built from the pinned source; Blender's embedded Python scripting remains enabled. Prefer static linking for dependencies where supported, so the app needs fewer separately installed libraries. Keep dynamic dependencies only where platform constraints or licensing require them, and record them. Preserve the original Blender-owned UI, renderer, and other supported features. Rust/performance enhancements follow the working baseline.
 
 ## Verification and redundancy checks
 
@@ -32,22 +32,24 @@ Produce a native macOS build that runs locally without crashing. The accepted [b
 The legacy platform/build assumptions prevent a native application build on the developer's Mac. No native application has launched, and its runtime stability is untested.
 
 **Desired behavior:**
-The native application and player retain the reference release's features and Blender-owned interactions. The editor starts, accepts real input, edits and saves scenes, reopens them, and completes foreground/background renders. Existing error and cancellation paths remain functional. Completion requires the accepted preservation gates, not merely an executable or a quiet idle window.
+The native application retains supported reference features and Blender-owned interactions, excluding the Game Engine/player. The editor starts, accepts real input, edits and saves scenes, reopens them, and completes foreground/background renders. Existing error and cancellation paths remain functional. Completion requires the accepted preservation gates, not merely an executable or a quiet idle window.
 
 **Key interfaces:**
 - `GHOST_ISystem` and `GHOST_IWindow`: preserve original window, event, cursor, display, and drawing-context contracts through the native platform adapter.
 - Blender Internal and its command-line rendering interface: preserve scene/settings semantics and measured output parity.
-- The legacy Python 2.5 API and bundled script registration: retain behavior without a Python 3 API migration.
+- The legacy Python 2.5 API and bundled script registration: retain behavior using the bundled Python 2.5.6 runtime, without a Python 3 API migration.
 - SDNA reconstruction and scene serialization: support native pointer widths and semantic file round trips.
-- Runtime resource/dependency discovery: locate verified native libraries, scripts, fonts, translations, and player resources predictably.
+- Runtime resource/dependency discovery: locate verified native libraries, bundled Python/scripts, fonts, and translations predictably.
 
 **Acceptance criteria:**
 - [ ] Establish the runnable original Mac reference, preservation matrix, hashed fixtures, and locked comparison limits before application porting. If external access is needed, record the exact missing resource and keep this milestone open.
-- [ ] Reproduce the native application/player build from a documented fresh build directory with pinned dependency provenance; verify arm64 architecture and actual library resolution.
+- [ ] Reproduce the native application build without Game Engine/player from a documented fresh build directory with pinned dependency provenance; verify arm64 architecture and actual library resolution.
+- [ ] Build and package Python 2.5.6 from the pinned source with Blender scripting enabled; verify Blender uses the bundled runtime and bundled scripts in a clean account with no system Python installation required.
+- [ ] Prefer static linking for dependencies when supported; verify the packaged app's dynamic dependencies and document each remaining runtime requirement.
 - [ ] Launch the packaged application five times from a clean test account, exercise real editor input, and exit normally each time, with zero observed application crashes or new application crash reports.
 - [ ] Complete ten recorded edit/save/reopen/render cycles, including successful render cancellation and a subsequent successful render, with zero observed crashes, hangs requiring force termination, or corrupted scene/output files.
 - [ ] Complete GUI F12 and CLI still/animation renders from reference fixtures at relevant thread counts; validate dimensions/channels and compare outputs within the locked limits.
-- [ ] Pass the full preservation matrix, original UI geometry/interaction checks, semantic file round trips, script/format tests, and native resource/player checks against the packaged artifacts.
+- [ ] Pass the applicable preservation matrix, original UI geometry/interaction checks, semantic file round trips, Python script/format tests, and native resource checks against the packaged artifacts; Game Engine/player checks are excluded by the approved build scope.
 - [ ] Capture commands, exit codes, logs, screenshots, render artifacts, and comparison reports. Distinguish observed crash-free coverage from a guarantee that every possible workflow is crash-free.
 - [ ] Diagnose and fix failures in the responsible compatibility boundary without suppressing errors, dropping reference features, changing UI/settings, substituting fake tests, or widening comparison limits.
 
@@ -75,3 +77,7 @@ The maintainer subsequently confirmed no compatible Intel Mac or configured lega
 ### Maintainer scope steering — 2026-10-13
 
 The maintainer instructed: “Work around the reference for now and focus on getting a build working.” Original reference execution and locked comparisons are deferred as prerequisites to beginning application work. They remain open parity requirements; the immediate deliverable is a real native build with executed launch/render evidence and explicit compatibility limitations. Preserve the original application/renderer and legacy Python API while repairing platform/build boundaries.
+
+### Maintainer build-scope update — 2026-10-14
+
+Build without the Game Engine and player. Keep Blender's Python scripting, but bundle Python 2.5.6 rather than requiring an installed system Python. Prefer static dependencies where technically supported; inspect actual packaged linkage and document unavoidable dynamic runtime requirements.
