@@ -80,6 +80,11 @@ void libtiff_loadlibtiff(void)
 	if (filename) libtiff = PIL_dynlib_open(filename);
 	if (libtiff != NULL)  return;
 
+#ifdef BLENDER_TIFF_LIBRARY
+	libtiff = PIL_dynlib_open(BLENDER_TIFF_LIBRARY);
+	if (libtiff != NULL) return;
+#endif
+
 	/* Try to find libtiff in a couple of standard places */
 	libtiff = PIL_dynlib_open("libtiff.so");
 	if (libtiff != NULL)  return;

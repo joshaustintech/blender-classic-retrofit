@@ -160,13 +160,13 @@ static PyObject *Point_repr(PointObject * self)
 //---------------------SEQUENCE PROTOCOLS------------------------
 //----------------------------len(object)------------------------
 //sequence length
-static int Point_len(PointObject * self)
+static Py_ssize_t Point_len(PointObject * self)
 {
 	return self->size;
 }
 //----------------------------object[]---------------------------
 //sequence accessor (get)
-static PyObject *Point_item(PointObject * self, int i)
+static PyObject *Point_item(PointObject * self, Py_ssize_t i)
 {
 	if(i < 0 || i >= self->size)
 		return EXPP_ReturnPyObjError(PyExc_IndexError,
@@ -177,7 +177,7 @@ static PyObject *Point_item(PointObject * self, int i)
 }
 //----------------------------object[]-------------------------
 //sequence accessor (set)
-static int Point_ass_item(PointObject * self, int i, PyObject * ob)
+static int Point_ass_item(PointObject * self, Py_ssize_t i, PyObject * ob)
 {
 	PyObject *f = NULL;
 
@@ -198,7 +198,7 @@ static int Point_ass_item(PointObject * self, int i, PyObject * ob)
 }
 //----------------------------object[z:y]------------------------
 //sequence slice (get)
-static PyObject *Point_slice(PointObject * self, int begin, int end)
+static PyObject *Point_slice(PointObject * self, Py_ssize_t begin, Py_ssize_t end)
 {
 	PyObject *list = NULL;
 	int count;
@@ -217,7 +217,7 @@ static PyObject *Point_slice(PointObject * self, int begin, int end)
 }
 //----------------------------object[z:y]------------------------
 //sequence slice (set)
-static int Point_ass_slice(PointObject * self, int begin, int end,
+static int Point_ass_slice(PointObject * self, Py_ssize_t begin, Py_ssize_t end,
 			     PyObject * seq)
 {
 	int i, y, size = 0;
@@ -432,7 +432,7 @@ static int Point_coerce(PyObject ** p1, PyObject ** p2)
 }
 //-----------------PROTOCOL DECLARATIONS--------------------------
 static PySequenceMethods Point_SeqMethods = {
-	(inquiry) Point_len,						/* sq_length */
+	(lenfunc) Point_len,						/* sq_length */
 	(binaryfunc) 0,								/* sq_concat */
 	(intargfunc) 0,								/* sq_repeat */
 	(intargfunc) Point_item,					/* sq_item */

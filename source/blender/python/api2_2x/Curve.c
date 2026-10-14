@@ -123,8 +123,8 @@ static PyObject *Curve_copy( BPy_Curve * self );
 static PyObject *Curve_getIter( BPy_Curve * self );
 static PyObject *Curve_iterNext( BPy_Curve * self );
 
-PyObject *Curve_getNurb( BPy_Curve * self, int n );
-static int Curve_length( PyInstanceObject * inst );
+PyObject *Curve_getNurb( BPy_Curve * self, Py_ssize_t n );
+static Py_ssize_t Curve_length( PyInstanceObject * inst );
 
 
 struct chartrans *text_to_curve( Object * ob, int mode );
@@ -1070,7 +1070,7 @@ static PyObject *Curve_iterNext( BPy_Curve * self )
  * this is a tp_as_sequence method, not a regular instance method.
  */
 
-static int Curve_length( PyInstanceObject * inst )
+static Py_ssize_t Curve_length( PyInstanceObject * inst )
 {
 	if( BPy_Curve_Check( ( PyObject * ) inst ) )
 		return ( ( int ) PyInt_AsLong
@@ -1088,7 +1088,7 @@ static int Curve_length( PyInstanceObject * inst )
  * it is called via the [] operator, not as a usual instance method.
  */
 
-PyObject *Curve_getNurb( BPy_Curve * self, int n )
+PyObject *Curve_getNurb( BPy_Curve * self, Py_ssize_t n )
 {
 	Nurb *pNurb;
 	int i;
@@ -1433,7 +1433,7 @@ static int Curve_compare( BPy_Curve * a, BPy_Curve * b );
 static PyObject *Curve_repr( BPy_Curve * msh );
 
 static PySequenceMethods Curve_as_sequence = {
-	( inquiry ) Curve_length,	/* sq_length   */
+	( lenfunc ) Curve_length,	/* sq_length   */
 	( binaryfunc ) 0,	/* sq_concat */
 	( intargfunc ) 0,	/* sq_repeat */
 	( intargfunc ) Curve_getNurb,	/* sq_item */

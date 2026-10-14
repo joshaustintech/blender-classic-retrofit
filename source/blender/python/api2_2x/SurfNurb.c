@@ -42,8 +42,8 @@
  * forward declarations go here
  */
 
-static int SurfNurb_setPoint( BPy_SurfNurb * self, int index, PyObject * ob );
-static int SurfNurb_length( PyInstanceObject * inst );
+static int SurfNurb_setPoint( BPy_SurfNurb * self, Py_ssize_t index, PyObject * ob );
+static Py_ssize_t SurfNurb_length( PyInstanceObject * inst );
 static PyObject *SurfNurb_getIter( BPy_SurfNurb * self );
 static PyObject *SurfNurb_iterNext( BPy_SurfNurb * self );
 PyObject *SurfNurb_append( BPy_SurfNurb * self, PyObject * args );
@@ -523,7 +523,7 @@ static PyObject *SurfNurb_iterNext( BPy_SurfNurb * self )
  * this is a tp_as_sequence method, not a regular instance method.
  */
 
-static int SurfNurb_length( PyInstanceObject * inst )
+static Py_ssize_t SurfNurb_length( PyInstanceObject * inst )
 {
 	Nurb *nurb;
 
@@ -544,7 +544,7 @@ static int SurfNurb_length( PyInstanceObject * inst )
  * it is called via the [] operator, not as a usual instance method.
  */
 
-PyObject *SurfNurb_getPoint( BPy_SurfNurb * self, int index )
+PyObject *SurfNurb_getPoint( BPy_SurfNurb * self, Py_ssize_t index )
 {
 	Nurb *myNurb;
 
@@ -573,7 +573,7 @@ PyObject *SurfNurb_getPoint( BPy_SurfNurb * self, int index )
  * this is one of the tp_as_sequence methods, hence the int N argument.
  * it is called via the [] = operator, not as a usual instance method.
  */
-static int SurfNurb_setPoint( BPy_SurfNurb * self, int index, PyObject * pyOb )
+static int SurfNurb_setPoint( BPy_SurfNurb * self, Py_ssize_t index, PyObject * pyOb )
 {
 	Nurb *nurb = self->nurb;
 	int size;
@@ -681,7 +681,7 @@ PyObject *SurfNurb_pointAtIndex( Nurb * nurb, int index )
  */
 
 static PySequenceMethods SurfNurb_as_sequence = {
-	( inquiry ) SurfNurb_length,	/* sq_length   */
+	( lenfunc ) SurfNurb_length,	/* sq_length   */
 	( binaryfunc ) 0,	/* sq_concat */
 	( intargfunc ) 0,	/* sq_repeat */
 	( intargfunc ) SurfNurb_getPoint,	/* sq_item */

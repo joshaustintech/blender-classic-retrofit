@@ -44,23 +44,23 @@ static PyObject *rgbTuple_getAttr( BPy_rgbTuple * self, char *name );
 static int rgbTuple_setAttr( BPy_rgbTuple * self, char *name, PyObject * v );
 static PyObject *rgbTuple_repr( BPy_rgbTuple * self );
 
-static int rgbTupleLength( void );
+static Py_ssize_t rgbTupleLength( void );
 
 static PyObject *rgbTupleSubscript( BPy_rgbTuple * self, PyObject * key );
 static int rgbTupleAssSubscript( BPy_rgbTuple * self, PyObject * who,
 				 PyObject * cares );
 
-static PyObject *rgbTupleItem( BPy_rgbTuple * self, int i );
-static int rgbTupleAssItem( BPy_rgbTuple * self, int i, PyObject * ob );
-static PyObject *rgbTupleSlice( BPy_rgbTuple * self, int begin, int end );
-static int rgbTupleAssSlice( BPy_rgbTuple * self, int begin, int end,
+static PyObject *rgbTupleItem( BPy_rgbTuple * self, Py_ssize_t i );
+static int rgbTupleAssItem( BPy_rgbTuple * self, Py_ssize_t i, PyObject * ob );
+static PyObject *rgbTupleSlice( BPy_rgbTuple * self, Py_ssize_t begin, Py_ssize_t end );
+static int rgbTupleAssSlice( BPy_rgbTuple * self, Py_ssize_t begin, Py_ssize_t end,
 			     PyObject * seq );
 
 /*****************************************************************************/
 /* Python rgbTuple_Type Mapping Methods table:                               */
 /*****************************************************************************/
 static PyMappingMethods rgbTupleAsMapping = {
-	( inquiry ) rgbTupleLength,	/* mp_length        */
+	( lenfunc ) rgbTupleLength,	/* mp_length        */
 	( binaryfunc ) rgbTupleSubscript,	/* mp_subscript     */
 	( objobjargproc ) rgbTupleAssSubscript,	/* mp_ass_subscript */
 };
@@ -69,7 +69,7 @@ static PyMappingMethods rgbTupleAsMapping = {
 /* Python rgbTuple_Type Sequence Methods table:                              */
 /*****************************************************************************/
 static PySequenceMethods rgbTupleAsSequence = {
-	( inquiry ) rgbTupleLength,	/* sq_length */
+	( lenfunc ) rgbTupleLength,	/* sq_length */
 	( binaryfunc ) 0,	/* sq_concat */
 	( intargfunc ) 0,	/* sq_repeat */
 	( intargfunc ) rgbTupleItem,	/* sq_item */
@@ -255,7 +255,7 @@ static int rgbTuple_setAttr( BPy_rgbTuple * self, char *name, PyObject * v )
 /*             These functions provide code to access rgbTuple objects as    */
 /*             mappings.                                                     */
 /*****************************************************************************/
-static int rgbTupleLength( void )
+static Py_ssize_t rgbTupleLength( void )
 {
 	return 3;
 }
@@ -266,7 +266,7 @@ static PyObject *rgbTupleSubscript( BPy_rgbTuple * self, PyObject * key )
 	int i;
 
 	if( PyNumber_Check( key ) )
-		return rgbTupleItem( self, ( int ) PyInt_AsLong( key ) );
+		return rgbTupleItem( self, ( Py_ssize_t ) PyInt_AsLong( key ) );
 
 	if( !PyArg_ParseTuple( key, "s", &name ) )
 		return EXPP_ReturnPyObjError( PyExc_TypeError,
@@ -295,7 +295,7 @@ static int rgbTupleAssSubscript( BPy_rgbTuple * self, PyObject * key,
 					    "value to assign must be a number" );
 
 	if( PyNumber_Check( key ) )
-		return rgbTupleAssItem( self, ( int ) PyInt_AsLong( key ), v );
+		return rgbTupleAssItem( self, ( Py_ssize_t ) PyInt_AsLong( key ), v );
 
 	if( !PyArg_Parse( key, "s", &name ) )
 		return EXPP_ReturnIntError( PyExc_TypeError,
@@ -320,7 +320,7 @@ static int rgbTupleAssSubscript( BPy_rgbTuple * self, PyObject * key,
 /*             These functions provide code to access rgbTuple objects as    */
 /*             sequences.                                                    */
 /*****************************************************************************/
-static PyObject *rgbTupleItem( BPy_rgbTuple * self, int i )
+static PyObject *rgbTupleItem( BPy_rgbTuple * self, Py_ssize_t i )
 {
 	if( i < 0 || i >= 3 )
 		return EXPP_ReturnPyObjError( PyExc_IndexError,
@@ -329,7 +329,7 @@ static PyObject *rgbTupleItem( BPy_rgbTuple * self, int i )
 	return PyFloat_FromDouble( (long)(*( self->rgb[i] )) );
 }
 
-static PyObject *rgbTupleSlice( BPy_rgbTuple * self, int begin, int end )
+static PyObject *rgbTupleSlice( BPy_rgbTuple * self, Py_ssize_t begin, Py_ssize_t end )
 {
 	PyObject *list;
 	int count;
@@ -350,7 +350,7 @@ static PyObject *rgbTupleSlice( BPy_rgbTuple * self, int begin, int end )
 	return list;
 }
 
-static int rgbTupleAssItem( BPy_rgbTuple * self, int i, PyObject * ob )
+static int rgbTupleAssItem( BPy_rgbTuple * self, Py_ssize_t i, PyObject * ob )
 {
 	if( i < 0 || i >= 3 )
 		return EXPP_ReturnIntError( PyExc_IndexError,
@@ -366,7 +366,7 @@ static int rgbTupleAssItem( BPy_rgbTuple * self, int i, PyObject * ob )
 	return 0;
 }
 
-static int rgbTupleAssSlice( BPy_rgbTuple * self, int begin, int end,
+static int rgbTupleAssSlice( BPy_rgbTuple * self, Py_ssize_t begin, Py_ssize_t end,
 			     PyObject * seq )
 {
 	int count;

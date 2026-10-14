@@ -1258,14 +1258,14 @@ static PyObject *ActionStrips_nextIter( BPy_ActionStrips * self )
 
 /* return the number of action strips */
 
-static int ActionStrips_length( BPy_ActionStrips * self )
+static Py_ssize_t ActionStrips_length( BPy_ActionStrips * self )
 {
 	return BLI_countlist( &self->ob->nlastrips );
 }
 
 /* return an action strip */
 
-static PyObject *ActionStrips_item( BPy_ActionStrips * self, int i )
+static PyObject *ActionStrips_item( BPy_ActionStrips * self, Py_ssize_t i )
 {
 	bActionStrip *strip = NULL;
 
@@ -1293,7 +1293,7 @@ static PyObject *ActionStrips_item( BPy_ActionStrips * self, int i )
 /* Python BPy_ActionStrips sequence table:                                  */
 /*****************************************************************************/
 static PySequenceMethods ActionStrips_as_sequence = {
-	( inquiry ) ActionStrips_length,	/* sq_length */
+	( lenfunc ) ActionStrips_length,	/* sq_length */
 	( binaryfunc ) 0,	/* sq_concat */
 	( intargfunc ) 0,	/* sq_repeat */
 	( intargfunc ) ActionStrips_item,	/* sq_item */

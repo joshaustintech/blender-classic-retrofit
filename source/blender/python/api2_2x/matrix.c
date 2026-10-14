@@ -484,14 +484,14 @@ static char MatrixObject_doc[] = "This is a wrapper for matrix objects.";
 /*---------------------SEQUENCE PROTOCOLS------------------------
   ----------------------------len(object)------------------------
   sequence length*/
-static int Matrix_len(MatrixObject * self)
+static Py_ssize_t Matrix_len(MatrixObject * self)
 {
 	return (self->colSize * self->rowSize);
 }
 /*----------------------------object[]---------------------------
   sequence accessor (get)
   the wrapped vector gives direct access to the matrix data*/
-static PyObject *Matrix_item(MatrixObject * self, int i)
+static PyObject *Matrix_item(MatrixObject * self, Py_ssize_t i)
 {
 	if(i < 0 || i >= self->rowSize)
 		return EXPP_ReturnPyObjError(PyExc_IndexError,
@@ -501,7 +501,7 @@ static PyObject *Matrix_item(MatrixObject * self, int i)
 }
 /*----------------------------object[]-------------------------
   sequence accessor (set)*/
-static int Matrix_ass_item(MatrixObject * self, int i, PyObject * ob)
+static int Matrix_ass_item(MatrixObject * self, Py_ssize_t i, PyObject * ob)
 {
 	int y, x, size = 0;
 	float vec[4];
@@ -547,7 +547,7 @@ static int Matrix_ass_item(MatrixObject * self, int i, PyObject * ob)
 }
 /*----------------------------object[z:y]------------------------
   sequence slice (get)*/
-static PyObject *Matrix_slice(MatrixObject * self, int begin, int end)
+static PyObject *Matrix_slice(MatrixObject * self, Py_ssize_t begin, Py_ssize_t end)
 {
 
 	PyObject *list = NULL;
@@ -567,7 +567,7 @@ static PyObject *Matrix_slice(MatrixObject * self, int begin, int end)
 }
 /*----------------------------object[z:y]------------------------
   sequence slice (set)*/
-static int Matrix_ass_slice(MatrixObject * self, int begin, int end,
+static int Matrix_ass_slice(MatrixObject * self, Py_ssize_t begin, Py_ssize_t end,
 			     PyObject * seq)
 {
 	int i, x, y, size, sub_size = 0;
@@ -806,7 +806,7 @@ static int Matrix_coerce(PyObject ** m1, PyObject ** m2)
 }
 /*-----------------PROTOCOL DECLARATIONS--------------------------*/
 static PySequenceMethods Matrix_SeqMethods = {
-	(inquiry) Matrix_len,					/* sq_length */
+	(lenfunc) Matrix_len,					/* sq_length */
 	(binaryfunc) 0,							/* sq_concat */
 	(intargfunc) 0,							/* sq_repeat */
 	(intargfunc) Matrix_item,				/* sq_item */

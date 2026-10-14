@@ -150,8 +150,11 @@ GHOST_TSuccess GHOST_System::beginFullScreen(const GHOST_DisplaySetting& setting
 			success = m_displayManager->setCurrentDisplaySetting(GHOST_DisplayManager::kMainDisplay, setting);
 			if (success == GHOST_kSuccess) {
                 //GHOST_PRINT("GHOST_System::beginFullScreen(): creating full-screen window\n");
+				GHOST_IWindow* previousWindow = m_windowManager->getActiveWindow();
 				success = createFullScreenWindow((GHOST_Window**)window, stereoVisual);
 				if (success == GHOST_kSuccess) {
+					m_windowManager->setWindowInactive(*window);
+					if (previousWindow) m_windowManager->setActiveWindow(previousWindow);
 					m_windowManager->beginFullScreen(*window, stereoVisual);
 				}
 				else {

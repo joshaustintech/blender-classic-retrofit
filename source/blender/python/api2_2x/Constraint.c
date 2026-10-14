@@ -1558,7 +1558,7 @@ static PyObject *ConstraintSeq_nextIter( BPy_ConstraintSeq * self )
 
 /* return the number of constraints */
 
-static int ConstraintSeq_length( BPy_ConstraintSeq * self )
+static Py_ssize_t ConstraintSeq_length( BPy_ConstraintSeq * self )
 {
 	return BLI_countlist( self->pchan ?
 		&self->pchan->constraints : &self->obj->constraints );
@@ -1566,7 +1566,7 @@ static int ConstraintSeq_length( BPy_ConstraintSeq * self )
 
 /* return a constraint */
 
-static PyObject *ConstraintSeq_item( BPy_ConstraintSeq * self, int i )
+static PyObject *ConstraintSeq_item( BPy_ConstraintSeq * self, Py_ssize_t i )
 {
 	bConstraint *con = NULL;
 
@@ -1597,7 +1597,7 @@ static PyObject *ConstraintSeq_item( BPy_ConstraintSeq * self, int i )
 /* Python BPy_ConstraintSeq sequence table:                                  */
 /*****************************************************************************/
 static PySequenceMethods ConstraintSeq_as_sequence = {
-	( inquiry ) ConstraintSeq_length,	/* sq_length */
+	( lenfunc ) ConstraintSeq_length,	/* sq_length */
 	( binaryfunc ) 0,	/* sq_concat */
 	( intargfunc ) 0,	/* sq_repeat */
 	( intargfunc ) ConstraintSeq_item,	/* sq_item */

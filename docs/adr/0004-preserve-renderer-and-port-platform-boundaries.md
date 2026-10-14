@@ -1,0 +1,3 @@
+# Preserve the original renderer and port the platform boundaries
+
+The native baseline uses Cocoa behind the existing GHOST interface, retains legacy OpenGL drawing and Blender Internal, and preserves the Python 2.5 behavior baseline. This was chosen over importing a newer Blender application or replacing the drawing/rendering pipeline because those approaches would expand the feature and UX preservation problem. A native offscreen legacy OpenGL probe passes on the current Mac, but onscreen editor behavior and full renderer parity still require proof. Rust enhancements and upstream performance/stability backports follow the accepted working baseline.

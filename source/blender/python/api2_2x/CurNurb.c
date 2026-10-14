@@ -58,8 +58,8 @@ static PyObject *CurNurb_getKnotsU( BPy_CurNurb * self );
 static PyObject *CurNurb_getKnotsV( BPy_CurNurb * self );
 static PyObject *CurNurb_getPoints( BPy_CurNurb * self );
 /* static PyObject* CurNurb_setXXX( BPy_CurNurb* self, PyObject* args ); */
-static int CurNurb_setPoint( BPy_CurNurb * self, int index, PyObject * ob );
-static int CurNurb_length( PyInstanceObject * inst );
+static int CurNurb_setPoint( BPy_CurNurb * self, Py_ssize_t index, PyObject * ob );
+static Py_ssize_t CurNurb_length( PyInstanceObject * inst );
 static PyObject *CurNurb_getIter( BPy_CurNurb * self );
 static PyObject *CurNurb_iterNext( BPy_CurNurb * self );
 PyObject *CurNurb_append( BPy_CurNurb * self, PyObject * value );
@@ -144,7 +144,7 @@ static PyMethodDef BPy_CurNurb_methods[] = {
  */
 
 static PySequenceMethods CurNurb_as_sequence = {
-	( inquiry ) CurNurb_length,	/* sq_length   */
+	( lenfunc ) CurNurb_length,	/* sq_length   */
 	( binaryfunc ) 0,	/* sq_concat */
 	( intargfunc ) 0,	/* sq_repeat */
 	( intargfunc ) CurNurb_getPoint,	/* sq_item */
@@ -788,7 +788,7 @@ static PyObject *CurNurb_isCyclic( BPy_CurNurb * self )
  * this is a tp_as_sequence method, not a regular instance method.
  */
 
-static int CurNurb_length( PyInstanceObject * inst )
+static Py_ssize_t CurNurb_length( PyInstanceObject * inst )
 {
 	Nurb *nurb;
 	int len;
@@ -810,7 +810,7 @@ static int CurNurb_length( PyInstanceObject * inst )
  * it is called via the [] operator, not as a usual instance method.
  */
 
-PyObject *CurNurb_getPoint( BPy_CurNurb * self, int index )
+PyObject *CurNurb_getPoint( BPy_CurNurb * self, Py_ssize_t index )
 {
 	Nurb *myNurb;
 
@@ -849,7 +849,7 @@ PyObject *CurNurb_getPoint( BPy_CurNurb * self, int index )
  * this is one of the tp_as_sequence methods, hence the int N argument.
  * it is called via the [] = operator, not as a usual instance method.
  */
-static int CurNurb_setPoint( BPy_CurNurb * self, int index, PyObject * pyOb )
+static int CurNurb_setPoint( BPy_CurNurb * self, Py_ssize_t index, PyObject * pyOb )
 {
 	Nurb *nurb = self->nurb;
 	int size;

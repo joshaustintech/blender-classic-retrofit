@@ -158,7 +158,7 @@ namespace MT {
 
 		Quaternion<Scalar> inverse() const
 		{
-			return conjugate / length2();
+			return conjugate() / length2();
 		}
 		
 		Quaternion<Scalar> slerp(const Quaternion<Scalar>& q, const Scalar& t) const

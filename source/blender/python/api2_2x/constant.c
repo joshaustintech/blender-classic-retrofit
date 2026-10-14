@@ -93,7 +93,7 @@ static PyMethodDef BPy_constant_methods[] = {
 	{NULL, NULL, 0, NULL}
 };
 //------------------------mp_length
-static int constantLength(BPy_constant *self)
+static Py_ssize_t constantLength(BPy_constant *self)
 {
 	return 0;
 }
@@ -177,7 +177,7 @@ static void constant_dealloc(BPy_constant * self)
 
 //------------------TYPE_OBECT DEFINITION------------------------------
 static PyMappingMethods constantAsMapping = {
-	(inquiry) constantLength,					// mp_length 
+	(lenfunc) constantLength,					// mp_length
 	(binaryfunc) constantSubscript,				// mp_subscript
 	(objobjargproc) constantAssSubscript,		// mp_ass_subscript
 };

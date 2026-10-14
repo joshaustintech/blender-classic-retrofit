@@ -1215,14 +1215,14 @@ static PyObject *ModSeq_nextIter( BPy_ModSeq * self )
 
 /* return the number of modifiers */
 
-static int ModSeq_length( BPy_ModSeq * self )
+static Py_ssize_t ModSeq_length( BPy_ModSeq * self )
 {
 	return BLI_countlist( &self->object->modifiers );
 }
 
 /* return a modifier */
 
-static PyObject *ModSeq_item( BPy_ModSeq * self, int i )
+static PyObject *ModSeq_item( BPy_ModSeq * self, Py_ssize_t i )
 {
 	ModifierData *md = NULL;
 
@@ -1245,7 +1245,7 @@ static PyObject *ModSeq_item( BPy_ModSeq * self, int i )
 /* Python BPy_ModSeq sequence table:                                      */
 /*****************************************************************************/
 static PySequenceMethods ModSeq_as_sequence = {
-	( inquiry ) ModSeq_length,	/* sq_length */
+	( lenfunc ) ModSeq_length,	/* sq_length */
 	( binaryfunc ) 0,	/* sq_concat */
 	( intargfunc ) 0,	/* sq_repeat */
 	( intargfunc ) ModSeq_item,	/* sq_item */

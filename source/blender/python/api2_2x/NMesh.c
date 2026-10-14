@@ -769,23 +769,23 @@ static PyObject *NMFace_repr( PyObject * self )
 	return PyString_FromString( "[NMFace]" );
 }
 
-static int NMFace_len( BPy_NMFace * self )
+static Py_ssize_t NMFace_len( BPy_NMFace * self )
 {
 	return PySequence_Length( self->v );
 }
 
-static PyObject *NMFace_item( BPy_NMFace * self, int i )
+static PyObject *NMFace_item( BPy_NMFace * self, Py_ssize_t i )
 {
 	return PySequence_GetItem( self->v, i );	// new ref
 }
 
-static PyObject *NMFace_slice( BPy_NMFace * self, int begin, int end )
+static PyObject *NMFace_slice( BPy_NMFace * self, Py_ssize_t begin, Py_ssize_t end )
 {
 	return PyList_GetSlice( self->v, begin, end );	// new ref
 }
 
 static PySequenceMethods NMFace_SeqMethods = {
-	( inquiry ) NMFace_len,	/* sq_length */
+	( lenfunc ) NMFace_len,	/* sq_length */
 	( binaryfunc ) 0,	/* sq_concat */
 	( intargfunc ) 0,	/* sq_repeat */
 	( intargfunc ) NMFace_item,	/* sq_item */
@@ -895,12 +895,12 @@ static int NMVert_setattr( PyObject * self, char *name, PyObject * v )
 	return EXPP_ReturnIntError( PyExc_AttributeError, name );
 }
 
-static int NMVert_len( BPy_NMVert * self )
+static Py_ssize_t NMVert_len( BPy_NMVert * self )
 {
 	return 3;
 }
 
-static PyObject *NMVert_item( BPy_NMVert * self, int i )
+static PyObject *NMVert_item( BPy_NMVert * self, Py_ssize_t i )
 {
 	if( i < 0 || i >= 3 )
 		return EXPP_ReturnPyObjError( PyExc_IndexError,
@@ -909,7 +909,7 @@ static PyObject *NMVert_item( BPy_NMVert * self, int i )
 	return Py_BuildValue( "f", self->co[i] );
 }
 
-static PyObject *NMVert_slice( BPy_NMVert * self, int begin, int end )
+static PyObject *NMVert_slice( BPy_NMVert * self, Py_ssize_t begin, Py_ssize_t end )
 {
 	PyObject *list;
 	int count;
@@ -930,7 +930,7 @@ static PyObject *NMVert_slice( BPy_NMVert * self, int begin, int end )
 	return list;
 }
 
-static int NMVert_ass_item( BPy_NMVert * self, int i, PyObject * ob )
+static int NMVert_ass_item( BPy_NMVert * self, Py_ssize_t i, PyObject * ob )
 {
 	if( i < 0 || i >= 3 )
 		return EXPP_ReturnIntError( PyExc_IndexError,
@@ -945,7 +945,7 @@ static int NMVert_ass_item( BPy_NMVert * self, int i, PyObject * ob )
 	return 0;
 }
 
-static int NMVert_ass_slice( BPy_NMVert * self, int begin, int end,
+static int NMVert_ass_slice( BPy_NMVert * self, Py_ssize_t begin, Py_ssize_t end,
 			     PyObject * seq )
 {
 	int count;
@@ -980,7 +980,7 @@ static int NMVert_ass_slice( BPy_NMVert * self, int begin, int end,
 }
 
 static PySequenceMethods NMVert_SeqMethods = {
-	( inquiry ) NMVert_len,	/* sq_length */
+	( lenfunc ) NMVert_len,	/* sq_length */
 	( binaryfunc ) 0,	/* sq_concat */
 	( intargfunc ) 0,	/* sq_repeat */
 	( intargfunc ) NMVert_item,	/* sq_item */

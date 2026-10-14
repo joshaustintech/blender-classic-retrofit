@@ -45,8 +45,12 @@ Remove the CMakeCache.txt file and try again from another folder, e.g.:
 ")
 ENDIF(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.4)
-PROJECT(Blender)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.20)
+PROJECT(Blender LANGUAGES C CXX)
+SET(CMAKE_C_STANDARD 99)
+SET(CMAKE_C_STANDARD_REQUIRED ON)
+SET(CMAKE_CXX_STANDARD 98)
+SET(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 #-----------------------------------------------------------------------------
 # Redirect output files
@@ -87,7 +91,7 @@ INCLUDE(CMake/macros.cmake)
 #-----------------------------------------------------------------------------
 #Platform specifics
 
-IF(UNIX)
+IF(UNIX AND NOT APPLE)
   INCLUDE(${CMAKE_ROOT}/Modules/FindOpenAL.cmake)
   IF(OPENAL_FOUND)
     SET(WITH_OPENAL ON)
@@ -189,7 +193,7 @@ IF(UNIX)
   SET(PLATFORM_LINKFLAGS "-pthread")
 
   INCLUDE_DIRECTORIES(/usr/include /usr/local/include)
-ENDIF(UNIX)
+ENDIF(UNIX AND NOT APPLE)
 
 IF(WIN32)
   INCLUDE(${CMAKE_ROOT}/Modules/Platform/Windows-cl.cmake)
@@ -289,77 +293,7 @@ IF(WIN32)
 ENDIF(WIN32)
 
 IF(APPLE)
-  IF(CMAKE_OSX_ARCHITECTURES MATCHES i386)
-    SET(LIBDIR ${CMAKE_SOURCE_DIR}/../lib/darwin-8.x.i386)
-  ELSE(CMAKE_OSX_ARCHITECTURES MATCHES i386)
-    SET(LIBDIR ${CMAKE_SOURCE_DIR}/../lib/darwin-6.1-powerpc)
-  ENDIF(CMAKE_OSX_ARCHITECTURES MATCHES i386)
-
-  INCLUDE(${CMAKE_ROOT}/Modules/FindOpenAL.cmake)
-  IF(OPENAL_FOUND)
-    SET(WITH_OPENAL ON)
-    SET(OPENAL_LIB ${OPENAL_LIBRARY})
-    SET(OPENAL_INC ${OPENAL_INCLUDE_DIR})
-  ELSE(OPENAL_FOUND)
-    SET(WITH_OPENAL OFF)
-  ENDIF(OPENAL_FOUND)
-
-  SET(PYTHON /System/Library/Frameworks/Python.framework/Versions/)
-  SET(PYTHON_VERSION 2.3)
-  SET(PYTHON_INC "${PYTHON}${PYTHON_VERSION}/include/python${PYTHON_VERSION}" CACHE STRING "")
-  SET(PYTHON_BINARY ${PYTHON}${PYTHON_VERSION}/bin/python${PYTHON_VERSION} CACHE STRING "")
-  SET(PYTHON_LIB "")
-  SET(PYTHON_LIBPATH ${PYTHON}${PYTHON_VERSION}/lib/python${PYTHON_VERSION}/config CACHE STRING "")
-  SET(PYTHON_LINKFLAGS "-u __dummy -u _PyMac_Error -framework System -framework Python")
-
-  SET(GETTEXT ${LIBDIR}/gettext)
-  SET(GETTEXT_INC "${GETTEXT}/include")
-  SET(GETTEXT_LIB intl iconv)
-  SET(GETTEXT_LIBPATH ${GETTEXT}/lib)
-
-  SET(PNG_LIB png)
-  SET(JPEG_LIB jpeg)
-
-  SET(ZLIB /usr)
-  SET(ZLIB_INC "${ZLIB}/include")
-  SET(ZLIB_LIB z)
-
-  SET(FREETYPE ${LIBDIR}/freetype)
-  SET(FREETYPE_INC ${FREETYPE}/include ${FREETYPE}/include/freetype2)
-  SET(FREETYPE_LIBPATH ${FREETYPE}/lib)
-  SET(FREETYPE_LIB freetype)
-
-  SET(OPENEXR ${LIBDIR}/openexr)
-  SET(OPENEXR_INC ${OPENEXR}/include/OpenEXR ${OPENEXR}/include)
-  IF(CMAKE_OSX_ARCHITECTURES MATCHES i386)
-    SET(OPENEXR_LIB Iex Half IlmImf Imath IlmThread)
-  ELSE(CMAKE_OSX_ARCHITECTURES MATCHES i386)
-    SET(OPENEXR_LIB Iex Half IlmImf Imath)
-  ENDIF(CMAKE_OSX_ARCHITECTURES MATCHES i386)
-  SET(OPENEXR_LIBPATH ${OPENEXR}/lib)
-
-  SET(LLIBS stdc++ SystemStubs)
-
-  SET(PLATFORM_CFLAGS "-pipe -fPIC -funsigned-char -fno-strict-aliasing")
-  SET(PLATFORM_LINKFLAGS "-fexceptions -framework CoreServices -framework Foundation -framework IOKit -framework AppKit -framework Carbon -framework AGL -framework AudioUnit -framework AudioToolbox -framework CoreAudio -framework QuickTime")
-
-  SET(SDL ${LIBDIR}/sdl)
-  SET(SDL_INC ${SDL}/include)
-  SET(SDL_LIB SDL)
-  SET(SDL_LIBPATH ${SDL}/lib)
-
-  SET(PNG "${LIBDIR}/png")
-  SET(PNG_INC "${PNG}/include")
-  SET(PNG_LIBPATH ${PNG}/lib)
-
-  SET(JPEG "${LIBDIR}/jpeg")
-  SET(JPEG_INC "${JPEG}/include")
-  SET(JPEG_LIBPATH ${JPEG}/lib)
-
-  SET(TIFF ${LIBDIR}/tiff)
-  SET(TIFF_INC ${TIFF}/include)
-
-  SET(EXETYPE MACOSX_BUNDLE)
+  INCLUDE(CMake/macos.cmake)
 ENDIF(APPLE)
 
 #-----------------------------------------------------------------------------
@@ -402,3 +336,20 @@ SUBDIRS(source/creator)
 IF(WITH_PLAYER)
   SUBDIRS(blenderplayer)
 ENDIF(WITH_PLAYER)
+
+# Focused native compatibility checks; GUI checks need WindowServer access.
+INCLUDE(CTest)
+IF(BUILD_TESTING AND APPLE)
+  ADD_EXECUTABLE(ghost_native_test intern/ghost/test/native/GHOST_NativeTest.cpp)
+  TARGET_INCLUDE_DIRECTORIES(ghost_native_test PRIVATE intern/ghost intern/string)
+  TARGET_LINK_LIBRARIES(ghost_native_test bf_ghost bf_string ${OPENGL_gl_LIBRARY} "-framework Cocoa")
+  ADD_TEST(NAME ghost_native COMMAND ghost_native_test)
+  ADD_LIBRARY(dynlibtest_plugin MODULE source/blender/blenlib/test/dynlibtest_plugin.c)
+  ADD_EXECUTABLE(dynlibtest source/blender/blenlib/test/dynlibtest.c)
+  TARGET_INCLUDE_DIRECTORIES(dynlibtest PRIVATE source/blender/blenlib)
+  TARGET_LINK_LIBRARIES(dynlibtest bf_blenlib)
+  ADD_TEST(NAME dynlib_native COMMAND dynlibtest $<TARGET_FILE:dynlibtest_plugin>)
+  ADD_TEST(NAME python_legacy COMMAND ${CMAKE_COMMAND}
+    -DBLENDER_EXECUTABLE=$<TARGET_FILE:blender> -DSOURCE_ROOT=${CMAKE_SOURCE_DIR}
+    -P ${CMAKE_SOURCE_DIR}/tools/macos/tests/python-smoke.cmake)
+ENDIF()

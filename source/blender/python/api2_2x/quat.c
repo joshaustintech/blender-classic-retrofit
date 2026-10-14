@@ -307,13 +307,13 @@ static char QuaternionObject_doc[] = "This is a wrapper for quaternion objects."
 //---------------------SEQUENCE PROTOCOLS------------------------
 //----------------------------len(object)------------------------
 //sequence length
-static int Quaternion_len(QuaternionObject * self)
+static Py_ssize_t Quaternion_len(QuaternionObject * self)
 {
 	return 4;
 }
 //----------------------------object[]---------------------------
 //sequence accessor (get)
-static PyObject *Quaternion_item(QuaternionObject * self, int i)
+static PyObject *Quaternion_item(QuaternionObject * self, Py_ssize_t i)
 {
 	if(i < 0 || i >= 4)
 		return EXPP_ReturnPyObjError(PyExc_IndexError,
@@ -323,7 +323,7 @@ static PyObject *Quaternion_item(QuaternionObject * self, int i)
 }
 //----------------------------object[]-------------------------
 //sequence accessor (set)
-static int Quaternion_ass_item(QuaternionObject * self, int i, PyObject * ob)
+static int Quaternion_ass_item(QuaternionObject * self, Py_ssize_t i, PyObject * ob)
 {
 	PyObject *f = NULL;
 
@@ -344,7 +344,7 @@ static int Quaternion_ass_item(QuaternionObject * self, int i, PyObject * ob)
 }
 //----------------------------object[z:y]------------------------
 //sequence slice (get)
-static PyObject *Quaternion_slice(QuaternionObject * self, int begin, int end)
+static PyObject *Quaternion_slice(QuaternionObject * self, Py_ssize_t begin, Py_ssize_t end)
 {
 	PyObject *list = NULL;
 	int count;
@@ -363,7 +363,7 @@ static PyObject *Quaternion_slice(QuaternionObject * self, int begin, int end)
 }
 //----------------------------object[z:y]------------------------
 //sequence slice (set)
-static int Quaternion_ass_slice(QuaternionObject * self, int begin, int end,
+static int Quaternion_ass_slice(QuaternionObject * self, Py_ssize_t begin, Py_ssize_t end,
 			     PyObject * seq)
 {
 	int i, y, size = 0;
@@ -543,7 +543,7 @@ static int Quaternion_coerce(PyObject ** q1, PyObject ** q2)
 }
 //-----------------PROTOCOL DECLARATIONS--------------------------
 static PySequenceMethods Quaternion_SeqMethods = {
-	(inquiry) Quaternion_len,					/* sq_length */
+	(lenfunc) Quaternion_len,					/* sq_length */
 	(binaryfunc) 0,								/* sq_concat */
 	(intargfunc) 0,								/* sq_repeat */
 	(intargfunc) Quaternion_item,				/* sq_item */

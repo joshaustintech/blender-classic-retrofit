@@ -683,7 +683,7 @@ static PyGetSetDef BPy_MCol_getseters[] = {
 
 /*----------------------------object[]---------------------------
   sequence accessor (get)*/
-static PyObject *MCol_item(BPy_MCol * self, int i)
+static PyObject *MCol_item(BPy_MCol * self, Py_ssize_t i)
 {
 	unsigned char param;
 	PyObject *attr;
@@ -715,7 +715,7 @@ static PyObject *MCol_item(BPy_MCol * self, int i)
 
 /*----------------------------object[]-------------------------
   sequence accessor (set)*/
-static int MCol_ass_item(BPy_MCol * self, int i, PyObject * value)
+static int MCol_ass_item(BPy_MCol * self, Py_ssize_t i, PyObject * value)
 {
 	unsigned char *param;
 	
@@ -755,7 +755,7 @@ static PyObject *MCol_repr( BPy_MCol * self )
 
 /*-----------------PROTCOL DECLARATIONS--------------------------*/
 static PySequenceMethods MCol_SeqMethods = {
-	(inquiry) NULL,						/* sq_length */
+	( lenfunc ) NULL,						/* sq_length */
 	(binaryfunc) NULL,								/* sq_concat */
 	(intargfunc) NULL,								/* sq_repeat */
 	(intargfunc) MCol_item,					/* sq_item */
@@ -1470,7 +1470,7 @@ static PyObject *PVert_CreatePyObject( MVert *vert )
  *
  ************************************************************************/
 
-static int MVertSeq_len( BPy_MVertSeq * self )
+static Py_ssize_t MVertSeq_len( BPy_MVertSeq * self )
 {
 	return self->mesh->totvert;
 }
@@ -1479,7 +1479,7 @@ static int MVertSeq_len( BPy_MVertSeq * self )
  * retrive a single MVert from somewhere in the vertex list
  */
 
-static PyObject *MVertSeq_item( BPy_MVertSeq * self, int i )
+static PyObject *MVertSeq_item( BPy_MVertSeq * self, Py_ssize_t i )
 {
 	if( i < 0 || i >= self->mesh->totvert )
 		return EXPP_ReturnPyObjError( PyExc_IndexError,
@@ -1497,7 +1497,7 @@ static PyObject *MVertSeq_item( BPy_MVertSeq * self, int i )
  * return the high index, but up to one less.
  */
 
-static PyObject *MVertSeq_slice( BPy_MVertSeq *self, int low, int high )
+static PyObject *MVertSeq_slice( BPy_MVertSeq *self, Py_ssize_t low, Py_ssize_t high )
 {
 	PyObject *list;
 	int i;
@@ -1531,7 +1531,7 @@ static PyObject *MVertSeq_slice( BPy_MVertSeq *self, int low, int high )
  * assign a single MVert to somewhere in the vertex list
  */
 
-static int MVertSeq_assign_item( BPy_MVertSeq * self, int i,
+static int MVertSeq_assign_item( BPy_MVertSeq * self, Py_ssize_t i,
 		BPy_MVert *v )
 {
 	MVert *dst = &self->mesh->mvert[i];
@@ -1555,7 +1555,7 @@ static int MVertSeq_assign_item( BPy_MVertSeq * self, int i,
 	return 0;
 }
 
-static int MVertSeq_assign_slice( BPy_MVertSeq *self, int low, int high,
+static int MVertSeq_assign_slice( BPy_MVertSeq *self, Py_ssize_t low, Py_ssize_t high,
 		   PyObject *args )
 {
 	int len, i;
@@ -1612,7 +1612,7 @@ static int MVertSeq_assign_slice( BPy_MVertSeq *self, int low, int high,
 }
 
 static PySequenceMethods MVertSeq_as_sequence = {
-	( inquiry ) MVertSeq_len,	/* sq_length */
+	( lenfunc ) MVertSeq_len,	/* sq_length */
 	( binaryfunc ) 0,	/* sq_concat */
 	( intargfunc ) 0,	/* sq_repeat */
 	( intargfunc ) MVertSeq_item,	/* sq_item */
@@ -2577,12 +2577,12 @@ static PyObject *MEdge_CreatePyObject( Mesh * mesh, int i )
  *
  ************************************************************************/
 
-static int MEdgeSeq_len( BPy_MEdgeSeq * self )
+static Py_ssize_t MEdgeSeq_len( BPy_MEdgeSeq * self )
 {
 	return self->mesh->totedge;
 }
 
-static PyObject *MEdgeSeq_item( BPy_MEdgeSeq * self, int i )
+static PyObject *MEdgeSeq_item( BPy_MEdgeSeq * self, Py_ssize_t i )
 {
 	if( i < 0 || i >= self->mesh->totedge )
 		return EXPP_ReturnPyObjError( PyExc_IndexError,
@@ -2593,7 +2593,7 @@ static PyObject *MEdgeSeq_item( BPy_MEdgeSeq * self, int i )
 
 
 static PySequenceMethods MEdgeSeq_as_sequence = {
-	( inquiry ) MEdgeSeq_len,	/* sq_length */
+	( lenfunc ) MEdgeSeq_len,	/* sq_length */
 	( binaryfunc ) 0,	/* sq_concat */
 	( intargfunc ) 0,	/* sq_repeat */
 	( intargfunc ) MEdgeSeq_item,	/* sq_item */
@@ -4486,7 +4486,7 @@ static long MFace_hash( BPy_MFace *self )
 	return (long)self->index;
 }
 
-static int MFace_len( BPy_MFace * self )
+static Py_ssize_t MFace_len( BPy_MFace * self )
 {
 	if( self->index >= self->mesh->totface )
 		return 0;
@@ -4494,7 +4494,7 @@ static int MFace_len( BPy_MFace * self )
 }
 
 static PySequenceMethods MFace_as_sequence = {
-	( inquiry ) MFace_len,         /* sq_length */
+	( lenfunc ) MFace_len,         /* sq_length */
 	( binaryfunc ) 0,	           /* sq_concat */
 	( intargfunc ) 0,	           /* sq_repeat */
 	( intargfunc ) 0,              /* sq_item */
@@ -4612,12 +4612,12 @@ static PyObject *MFace_CreatePyObject( Mesh * mesh, int i )
  *
  ************************************************************************/
 
-static int MFaceSeq_len( BPy_MFaceSeq * self )
+static Py_ssize_t MFaceSeq_len( BPy_MFaceSeq * self )
 {
 	return self->mesh->totface;
 }
 
-static PyObject *MFaceSeq_item( BPy_MFaceSeq * self, int i )
+static PyObject *MFaceSeq_item( BPy_MFaceSeq * self, Py_ssize_t i )
 {
 	if( i < 0 || i >= self->mesh->totface )
 		return EXPP_ReturnPyObjError( PyExc_IndexError,
@@ -4627,7 +4627,7 @@ static PyObject *MFaceSeq_item( BPy_MFaceSeq * self, int i )
 }
 
 static PySequenceMethods MFaceSeq_as_sequence = {
-	( inquiry ) MFaceSeq_len,      /* sq_length */
+	( lenfunc ) MFaceSeq_len,      /* sq_length */
 	( binaryfunc ) 0,	           /* sq_concat */
 	( intargfunc ) 0,	           /* sq_repeat */
 	( intargfunc ) MFaceSeq_item,  /* sq_item */

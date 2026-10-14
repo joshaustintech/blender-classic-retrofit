@@ -574,7 +574,7 @@ static PyObject *GroupObSeq_CreatePyObject( BPy_Group *self, GroupObject *iter )
 }
 
 
-static int GroupObSeq_len( BPy_GroupObSeq * self )
+static Py_ssize_t GroupObSeq_len( BPy_GroupObSeq * self )
 {
 	GROUP_DEL_CHECK_INT(self->bpygroup);
 	return BLI_countlist( &( self->bpygroup->group->gobject ) );
@@ -584,7 +584,7 @@ static int GroupObSeq_len( BPy_GroupObSeq * self )
  * retrive a single GroupOb from somewhere in the GroupObex list
  */
 
-static PyObject *GroupObSeq_item( BPy_GroupObSeq * self, int i )
+static PyObject *GroupObSeq_item( BPy_GroupObSeq * self, Py_ssize_t i )
 {
 	Group *group= self->bpygroup->group;
 	int index=0;
@@ -610,7 +610,7 @@ static PyObject *GroupObSeq_item( BPy_GroupObSeq * self, int i )
 }
 
 static PySequenceMethods GroupObSeq_as_sequence = {
-	( inquiry ) GroupObSeq_len,	/* sq_length */
+	( lenfunc ) GroupObSeq_len,	/* sq_length */
 	( binaryfunc ) 0,	/* sq_concat */
 	( intargfunc ) 0,	/* sq_repeat */
 	( intargfunc ) GroupObSeq_item,	/* sq_item */

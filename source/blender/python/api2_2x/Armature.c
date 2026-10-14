@@ -226,7 +226,7 @@ static void BonesDict_dealloc(BPy_BonesDict * self)
 }
 //------------------------mp_length
 //This gets the size of the dictionary
-static int BonesDict_len(BPy_BonesDict *self)
+static Py_ssize_t BonesDict_len(BPy_BonesDict *self)
 {
 	if (self->editmode_flag){
 		return BLI_countlist(&self->editbones);
@@ -359,7 +359,7 @@ static int BonesDict_SetItem(BPy_BonesDict *self, PyObject *key, PyObject *value
 //------------------TYPE_OBJECT DEFINITION--------------------------
 //Mapping Protocol
 static PyMappingMethods BonesDict_MapMethods = {
-	(inquiry) BonesDict_len,					//mp_length
+	(lenfunc) BonesDict_len,					//mp_length
 	(binaryfunc)BonesDict_GetItem,		//mp_subscript
 	(objobjargproc)BonesDict_SetItem,	//mp_ass_subscript
 };

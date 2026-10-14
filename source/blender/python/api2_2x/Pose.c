@@ -178,7 +178,7 @@ static void PoseBonesDict_dealloc(BPy_PoseBonesDict * self)
 }
 //------------------------mp_length
 //This gets the size of the dictionary
-static int PoseBonesDict_len(BPy_PoseBonesDict *self)
+static Py_ssize_t PoseBonesDict_len(BPy_PoseBonesDict *self)
 {
 	return BLI_countlist(self->bones);
 }
@@ -197,7 +197,7 @@ static PyObject *PoseBonesDict_GetItem(BPy_PoseBonesDict *self, PyObject* key)
 //------------------TYPE_OBECT DEFINITION--------------------------
 //Mapping Protocol
 static PyMappingMethods PoseBonesDict_MapMethods = {
-	(inquiry) PoseBonesDict_len,					//mp_length
+	(lenfunc) PoseBonesDict_len,					//mp_length
 	(binaryfunc)PoseBonesDict_GetItem,		//mp_subscript
 	0,														//mp_ass_subscript
 };

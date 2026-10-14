@@ -182,7 +182,7 @@ static PyGetSetDef C_IpoCurve_getseters[] = {
 /*****************************************************************************/
 
 static PyMappingMethods IpoCurve_as_mapping = {
-	( inquiry ) 0,	/* mp_length */
+	( lenfunc ) 0,	/* mp_length */
 	( binaryfunc ) IpoCurve_getCurval,	/* mp_subscript */
 	( objobjargproc ) IpoCurve_setCurval,	/* mp_ass_subscript */
 };

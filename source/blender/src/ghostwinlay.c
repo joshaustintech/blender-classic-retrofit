@@ -63,7 +63,7 @@
 #ifdef __APPLE__
 #include <OpenGL/OpenGL.h>
 #define __CARBONSOUND__
-#include <Carbon/Carbon.h>
+#include <ApplicationServices/ApplicationServices.h>
 
 /*declarations*/
 int checkAppleVideoCard(void);
@@ -130,9 +130,9 @@ int checkAppleVideoCard(void) {
 	long theErr;
 	unsigned long display_mask;
 	CGLRendererInfoObj rend;
-	long nrend;
+	GLint nrend;
 	int j;
-	long value;
+	GLint value;
 	long maxvram = 0;   /* we get always more than 1 renderer, check one, at least, has 8 Mo */
 	
 	display_mask = CGDisplayIDToOpenGLDisplayMask (CGMainDisplayID() );	
@@ -161,14 +161,7 @@ int checkAppleVideoCard(void) {
 		}
 	}
 	if (maxvram < 7500000 ) {       /* put a standard alert and quit*/ 
-		SInt16 junkHit;
-		char  inError[] = "* Not enough VRAM    ";
-		char  inText[] = "* blender needs at least 8Mb    ";
-		inError[0] = 16;
-		inText[0] = 28;
-				
-		fprintf(stderr, " vram is %li . not enough, aborting\n", maxvram);
-		StandardAlert (   kAlertStopAlert, (ConstStr255Param) &inError, (ConstStr255Param)&inText,NULL,&junkHit);
+		fprintf(stderr, "Not enough video memory: %li bytes (minimum 8 MB)\n", maxvram);
 		abort();
 	}
 	CGLDestroyRendererInfo (rend);
@@ -176,14 +169,11 @@ int checkAppleVideoCard(void) {
 }
 
 void getMacAvailableBounds(short *top, short *left, short *bottom, short *right) {
-	Rect outAvailableRect;
-	
-	GetAvailableWindowPositioningBounds ( GetMainDevice(), &outAvailableRect);
-	
-	*top = outAvailableRect.top;  
-    *left = outAvailableRect.left;
-    *bottom = outAvailableRect.bottom; 
-    *right = outAvailableRect.right;
+	CGRect rect = CGDisplayBounds(CGMainDisplayID());
+	*top = rect.origin.y;
+	*left = rect.origin.x;
+	*bottom = rect.origin.y + rect.size.height;
+	*right = rect.origin.x + rect.size.width;
 }
 
 #endif

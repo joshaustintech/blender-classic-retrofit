@@ -23,6 +23,13 @@
 #include <string.h>
 #include <stdio.h>
 
+/* absolute value */
+template < class T >
+inline T
+ABS( T a )
+{ return (0 < a) ? a : -a ; }
+
+
 // hack for MSVC6.0 compiler
 #ifdef _MSC_VER
 #if _MSC_VER < 1300
@@ -713,8 +720,8 @@ ntlVector3Dim<Scalar>::getOrthogonalntlVector3Dim() const
     */
   ntlVector3Dim<Scalar> vec(0.0);
   vec[(max+1)%3]= 1;
-  vec.normalize();
-  vec.projectNormalTo(this->getNormalized());
+  normalize(vec);
+  vec.projectNormalTo(getNormalized(*this));
   return vec;
 }
 

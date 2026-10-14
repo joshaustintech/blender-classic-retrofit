@@ -1,0 +1,20 @@
+--- a/configure
++++ b/configure
+@@ -2039,7 +2039,7 @@
+   # disables platform specific features beyond repair.
+   # On Mac OS X 10.3, defining _POSIX_C_SOURCE or _XOPEN_SOURCE
+   # has no effect, don't bother defining them
+-  FreeBSD/4.* | Darwin/[6789].*)
++  FreeBSD/4.* | Darwin/*)
+     define_xopen_source=no;;
+   # On AIX 4 and 5.1, mbstate_t is defined only when _XOPEN_SOURCE == 500 but
+   # used in wcsnrtombs() and mbsnrtowcs() even if _XOPEN_SOURCE is not defined
+@@ -4534,7 +4534,7 @@
+ 	    ;;
+ 	# is there any other compiler on Darwin besides gcc?
+ 	Darwin*)
+-	    BASECFLAGS="$BASECFLAGS -Wno-long-double -no-cpp-precomp -mno-fused-madd"
++	    BASECFLAGS="$BASECFLAGS -Wno-long-double -no-cpp-precomp -ffp-contract=off"
+ 	    if test "${enable_universalsdk}"; then
+ 		BASECFLAGS="-arch ppc -arch i386 -isysroot ${UNIVERSALSDK} ${BASECFLAGS}"
+ 	    fi

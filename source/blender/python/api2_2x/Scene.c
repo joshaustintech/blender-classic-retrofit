@@ -1292,7 +1292,7 @@ static PyObject *SceneObSeq_CreatePyObject( BPy_Scene *self, Base *iter, int mod
 	return (PyObject *)seq;
 }
 
-static int SceneObSeq_len( BPy_SceneObSeq * self )
+static Py_ssize_t SceneObSeq_len( BPy_SceneObSeq * self )
 {
 	Scene *scene= self->bpyscene->scene;
 	SCENE_DEL_CHECK_INT(self->bpyscene);
@@ -1330,7 +1330,7 @@ static int SceneObSeq_len( BPy_SceneObSeq * self )
  * retrive a single Object from somewhere in the Object list
  */
 
-static PyObject *SceneObSeq_item( BPy_SceneObSeq * self, int i )
+static PyObject *SceneObSeq_item( BPy_SceneObSeq * self, Py_ssize_t i )
 {
 	int index=0;
 	PyObject *bpy_obj;
@@ -1370,7 +1370,7 @@ static PyObject *SceneObSeq_item( BPy_SceneObSeq * self, int i )
 }
 
 static PySequenceMethods SceneObSeq_as_sequence = {
-	( inquiry ) SceneObSeq_len,	/* sq_length */
+	( lenfunc ) SceneObSeq_len,	/* sq_length */
 	( binaryfunc ) 0,	/* sq_concat */
 	( intargfunc ) 0,	/* sq_repeat */
 	( intargfunc ) SceneObSeq_item,	/* sq_item */

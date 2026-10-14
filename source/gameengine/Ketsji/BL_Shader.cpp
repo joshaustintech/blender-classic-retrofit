@@ -264,7 +264,7 @@ bool BL_Shader::LinkProgram()
 
 	int vertlen = 0, fraglen=0, proglen=0;
 	int vertstatus=0, fragstatus=0, progstatus=0;
-	unsigned int tmpVert=0, tmpFrag=0, tmpProg=0;
+	GLhandleARB tmpVert=0, tmpFrag=0, tmpProg=0;
 	int char_len=0;
 	char *logInf =0;
 
@@ -409,7 +409,7 @@ void BL_Shader::SetFragPtr( char *frag )
 	fragProg = frag;
 }
 
-unsigned int BL_Shader::GetProg()
+GLhandleARB BL_Shader::GetProg()
 { 
 	return mShader;
 }

@@ -66,12 +66,15 @@
 /*  for pre Py 2.5 */
 #if PY_VERSION_HEX < 0x02050000
 typedef int Py_ssize_t;
+#define lenfunc inquiry
 #define PY_SSIZE_T_MAX INT_MAX
 #define PY_SSIZE_T_MIN INT_MIN
 #else  
 /* Py 2.5 and later */
 #define  intargfunc  ssizeargfunc
-#define intintargfunc  ssizessizeargfunc 
+#define intintargfunc  ssizessizeargfunc
+#define intobjargproc ssizeobjargproc
+#define intintobjargproc ssizessizeobjargproc
 #endif
 
 #endif

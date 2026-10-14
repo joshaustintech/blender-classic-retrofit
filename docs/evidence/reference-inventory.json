@@ -1,0 +1,1331 @@
+{
+  "archive_name": "blender-2.45-OSX-10.3-py2.5-intel.tar.bz2",
+  "archive_sha256": "5cc3f1ea2481bcc191626196f06cd21a92952e835a57c854b5974a8523736b46",
+  "archive_md5": "d8663ceabb3eae88dd2e2c86a632e232",
+  "source_commit": "758a5a10e3a088eed05ebacf4e527b6c626a532f",
+  "coverage": "Static regular-file inventory; no executed reference fixtures or parity evidence",
+  "files": [
+    {
+      "path": "Blender.app/Contents/Info.plist",
+      "size": 1377,
+      "sha256": "c7af786840c864989a21dbee96776459d0ba16058423865f7ea1312f2b635a84"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/3ds_export.py",
+      "size": 30667,
+      "sha256": "4c4051a7ea7ea3521a67ae45482a240ed4cbda7a3b2e585f61c94c5484ae8787",
+      "source_sha256": "4c4051a7ea7ea3521a67ae45482a240ed4cbda7a3b2e585f61c94c5484ae8787",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/3ds_import.py",
+      "size": 32728,
+      "sha256": "0c2f3550cd53ad26d05c93c186038012daf00c866663dcfca62c17a69612232b",
+      "source_sha256": "0c2f3550cd53ad26d05c93c186038012daf00c866663dcfca62c17a69612232b",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/Axiscopy.py",
+      "size": 4207,
+      "sha256": "a791056f71e90ad85810fb91461ea04b141e8ea5038926e670c07d1dd50e7e46",
+      "source_sha256": "a6f05236a0dc61821ba3d782fd40a98fa75c145f84c501ba417b421b765a00ff",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/DirectX8Exporter.py",
+      "size": 34169,
+      "sha256": "a01b89bb488d4a2ac82d430fee099746a510fc8f23d2208481bec74630889af7",
+      "source_sha256": "a01b89bb488d4a2ac82d430fee099746a510fc8f23d2208481bec74630889af7",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/DirectX8Importer.py",
+      "size": 7052,
+      "sha256": "18bedfa52be2b9209a34e9a455009f27256ac8054d04fc8b530bf8c615076bdc",
+      "source_sha256": "18bedfa52be2b9209a34e9a455009f27256ac8054d04fc8b530bf8c615076bdc",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/IDPropBrowser.py",
+      "size": 12509,
+      "sha256": "6d4161e4ac3f0e45ef406bca9039c4921f76ccf33270a5731ee9fcd95c5b41b9",
+      "source_sha256": "6d4161e4ac3f0e45ef406bca9039c4921f76ccf33270a5731ee9fcd95c5b41b9",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/ac3d_export.py",
+      "size": 25144,
+      "sha256": "45de521dea1f415eef65b7f68c51b86462684a77eda19427bc9b97d04825f152",
+      "source_sha256": "0b243ec0d3e8b7fcd2bbb29a6f8d22cd6be656b49f3ab8489ca2942e84c15f0c",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/ac3d_import.py",
+      "size": 21358,
+      "sha256": "3b9b476e20048e48aca5f3e0897c99b5c594f558005d2ab1419f23cdc94efd6b",
+      "source_sha256": "689f0f302918c60ee72ef73df3319bf1d6ca16fc9dacca20020f24cb62a8f28b",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/add_mesh_torus.py",
+      "size": 1928,
+      "sha256": "af85d5ab99f29cbc331349087ebad0d502152990c76cb82e2a6ca813ec4e58f7",
+      "source_sha256": "af85d5ab99f29cbc331349087ebad0d502152990c76cb82e2a6ca813ec4e58f7",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/animation_trajectory.py",
+      "size": 17900,
+      "sha256": "74f5a7bc7ec0e24a3d5b7d7ca3d992d9e069bb46005c78f58fa36af4522a2de1",
+      "source_sha256": "74f5a7bc7ec0e24a3d5b7d7ca3d992d9e069bb46005c78f58fa36af4522a2de1",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/armature_symmetry.py",
+      "size": 9455,
+      "sha256": "d87e62591b7219752b931b21659d5ec25d5645cb9573475649f0c25a10dded24",
+      "source_sha256": "d87e62591b7219752b931b21659d5ec25d5645cb9573475649f0c25a10dded24",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bevel_center.py",
+      "size": 12830,
+      "sha256": "fc576241e182c592c68186123bf5b6979ef6c191095734b5e747e123d46dd099",
+      "source_sha256": "fc576241e182c592c68186123bf5b6979ef6c191095734b5e747e123d46dd099",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/blenderLipSynchro.py",
+      "size": 22415,
+      "sha256": "05947b43ea0b8f078131e860d0cf395ac9965bd4a8297b2ccb689e6d58448810",
+      "source_sha256": "05947b43ea0b8f078131e860d0cf395ac9965bd4a8297b2ccb689e6d58448810",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpydata/KUlang.txt",
+      "size": 2991,
+      "sha256": "67ca02d80869209b2b75817456c9e5ce3476b454876d43753f68ecd6a791cce4",
+      "source_sha256": "67ca02d80869209b2b75817456c9e5ce3476b454876d43753f68ecd6a791cce4",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpydata/config/readme.txt",
+      "size": 299,
+      "sha256": "c78e017e2a9b2077b44e3f058a04789f3acd74b8ab6f16b37dd6a3ec1d8fa123",
+      "source_sha256": "c78e017e2a9b2077b44e3f058a04789f3acd74b8ab6f16b37dd6a3ec1d8fa123",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpydata/readme.txt",
+      "size": 256,
+      "sha256": "fd2cb0a0a02cd8253df5b2d1dc8be0cf1db4bfa94a41bc25977e9b9b11700ad3",
+      "source_sha256": "fd2cb0a0a02cd8253df5b2d1dc8be0cf1db4bfa94a41bc25977e9b9b11700ad3",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/BPyAddMesh.py",
+      "size": 3221,
+      "sha256": "52a3ede1005e327635aa01cd7116a345adc9320c260b13abeeb9f5f9a9f395e7",
+      "source_sha256": "52a3ede1005e327635aa01cd7116a345adc9320c260b13abeeb9f5f9a9f395e7",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/BPyArmature.py",
+      "size": 4703,
+      "sha256": "5822e85f1de551c5307951452d9ad55dd69d8c5c24a85641621f0c2b44378334",
+      "source_sha256": "5822e85f1de551c5307951452d9ad55dd69d8c5c24a85641621f0c2b44378334",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/BPyBlender.py",
+      "size": 1695,
+      "sha256": "e9b945373a5101ac0b0ddf989329b366fe5dd26fe3972bcf27eae0e64f35a782",
+      "source_sha256": "9f4a751996fed525f4a43cbcc7c226be787d76c574db7cba4a686003e247b5f9",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/BPyCurve.py",
+      "size": 2300,
+      "sha256": "4828ea879bb4cd29cff9ccca0a547700d893b31f1bc4bd2291abe47ab1f73d18",
+      "source_sha256": "4828ea879bb4cd29cff9ccca0a547700d893b31f1bc4bd2291abe47ab1f73d18",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/BPyImage.py",
+      "size": 10537,
+      "sha256": "455783434140f3e6b009f56849b64b5e04d3573eccd017b0b95133056c90da41",
+      "source_sha256": "455783434140f3e6b009f56849b64b5e04d3573eccd017b0b95133056c90da41",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/BPyMathutils.py",
+      "size": 7008,
+      "sha256": "beec34b6ee484602b6718cc810c6c6403f283eaf3932a6aa940bb9ae2ae62922",
+      "source_sha256": "ee3d70b640a62661a44a4fe8aa15d4820d5aaafa5e1fafb5d89d0b2f983bd707",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/BPyMesh.py",
+      "size": 34215,
+      "sha256": "c9d87b124b0c52d1efc026e3e9c5a3dbfc53b2c9356b5dbd1dbbd7f7bc0d78d1",
+      "source_sha256": "c9d87b124b0c52d1efc026e3e9c5a3dbfc53b2c9356b5dbd1dbbd7f7bc0d78d1",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/BPyMesh_octree.py",
+      "size": 8208,
+      "sha256": "b137115aef61a03cafb442f8efd148c139d62f81cfa009053eb3fdba658cf253",
+      "source_sha256": "b137115aef61a03cafb442f8efd148c139d62f81cfa009053eb3fdba658cf253",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/BPyMesh_redux.py",
+      "size": 19671,
+      "sha256": "76b455ce7d30ca6e8367bfc9a2b802caef0bc54b015fd77ae0af5e087a14e11f",
+      "source_sha256": "76b455ce7d30ca6e8367bfc9a2b802caef0bc54b015fd77ae0af5e087a14e11f",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/BPyMessages.py",
+      "size": 1625,
+      "sha256": "02cb4db9b7a529f950d6f4ee1f1a97c86837ff0e9fc8648af9f38438d89912fc",
+      "source_sha256": "02cb4db9b7a529f950d6f4ee1f1a97c86837ff0e9fc8648af9f38438d89912fc",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/BPyNMesh.py",
+      "size": 2166,
+      "sha256": "d1208b6860db28d2c3c9000149abbb1d1fcc692b96106f78173d3766d81e57f1",
+      "source_sha256": "79cf4130af88808f2a4af58e2119c15ddf8191b0ea58ed69746ad371cdb84a1b",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/BPyObject.py",
+      "size": 2670,
+      "sha256": "1af5f8091b0b5c7b51f831fda2c3bbb1782ae7fc0cd4770a4501ad61faecf49c",
+      "source_sha256": "1af5f8091b0b5c7b51f831fda2c3bbb1782ae7fc0cd4770a4501ad61faecf49c",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/BPyRegistry.py",
+      "size": 7488,
+      "sha256": "9e91eca8de0796bbe50e6872e142360b32e036c87d00539906ebeab82ee22a5e",
+      "source_sha256": "0b65a4e0a9a321661827ceeba13c9e37f6ac2cb6deb361a997423825a0db84e3",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/BPyRender.py",
+      "size": 14275,
+      "sha256": "580853c602e74574c0d110504eda2206d4a32cf064484cf8671c7e81a0dc86f5",
+      "source_sha256": "580853c602e74574c0d110504eda2206d4a32cf064484cf8671c7e81a0dc86f5",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/BPySys.py",
+      "size": 1044,
+      "sha256": "3137e1f388a8805aca3e4dedd8b69239a900ec23f9c179715d320e662d5fb0db",
+      "source_sha256": "3137e1f388a8805aca3e4dedd8b69239a900ec23f9c179715d320e662d5fb0db",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/BPyWindow.py",
+      "size": 6913,
+      "sha256": "fcf3dc1a3d02093fcff436b3143b7d9874b2750f1cf53fec552159a88305fac5",
+      "source_sha256": "fcf3dc1a3d02093fcff436b3143b7d9874b2750f1cf53fec552159a88305fac5",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/ai2obj.py",
+      "size": 14303,
+      "sha256": "c8fc06cce1400ee13e6c269c20b6aba98adfe0fe1c459fcdaf31f57ad37fd3dd",
+      "source_sha256": "c8fc06cce1400ee13e6c269c20b6aba98adfe0fe1c459fcdaf31f57ad37fd3dd",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/colladaImEx/__init__.py",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "comparison": "archive_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/colladaImEx/collada.py",
+      "size": 123916,
+      "sha256": "f3f9be050ba9823e24c12df4b7a21a191b996a9cfb2b6a634073e4489de5d824",
+      "comparison": "archive_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/colladaImEx/cstartup.py",
+      "size": 21794,
+      "sha256": "00e23c80c0c3965d123b6b168f88a319f87d863d12f5463c83d70d30cab9f069",
+      "comparison": "archive_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/colladaImEx/cutils.py",
+      "size": 8437,
+      "sha256": "8fbe1261b19b832125a1b72d8623010519ab87cd9f343d799881c3ce25f1a1f0",
+      "comparison": "archive_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/colladaImEx/helperObjects.py",
+      "size": 8217,
+      "sha256": "3ca25ea0678447df61439867ae596f59488a490327eae797afb48a2b4688efca",
+      "comparison": "archive_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/colladaImEx/logo.png",
+      "size": 4162,
+      "sha256": "6c0cef52d9829194b3473397f6781c1c9c196ab4645d633d5ce4b39135add881",
+      "comparison": "archive_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/colladaImEx/translator.py",
+      "size": 128025,
+      "sha256": "1388927dd5fbdd2ce7550b2f403751e803316be82a808212c7de46d3a7de9e12",
+      "comparison": "archive_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/colladaImEx/xmlUtils.py",
+      "size": 5170,
+      "sha256": "487e352ff77b482b650dd8ac4fda9722d384d5a0edaf1f986d183927e5611473",
+      "comparison": "archive_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/defaultdoodads.py",
+      "size": 25628,
+      "sha256": "0a82e55e194441bec7cbda763069f2f8c71d46c5f4588e876a61d548e4bac1b6",
+      "source_sha256": "a8f20da27a9d172c7e00173855ac41e14c3027c4c55c0a7042ba45f79eec20a6",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/dxfColorMap.py",
+      "size": 11324,
+      "sha256": "4b4a66749c68944502c4ba4c981427563b2adb8e125877626710c585d07de4b0",
+      "source_sha256": "4b4a66749c68944502c4ba4c981427563b2adb8e125877626710c585d07de4b0",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/dxfReader.py",
+      "size": 13886,
+      "sha256": "d93b3d79248ac1b039a0504f28ff137ad8a63ec4322daf5afd8c2cbcf620b7f7",
+      "source_sha256": "d93b3d79248ac1b039a0504f28ff137ad8a63ec4322daf5afd8c2cbcf620b7f7",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/eps2obj.py",
+      "size": 14406,
+      "sha256": "50e776e64fd8dab0b24b96280888018499bde03dc34d7ecf22e14f6439c35902",
+      "source_sha256": "50e776e64fd8dab0b24b96280888018499bde03dc34d7ecf22e14f6439c35902",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/gimp2obj.py",
+      "size": 10044,
+      "sha256": "45f568c9359c83bad444000a5cfc3ee08b602c1c27c242642429612cb16791e3",
+      "source_sha256": "45f568c9359c83bad444000a5cfc3ee08b602c1c27c242642429612cb16791e3",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/mesh_gradient.py",
+      "size": 6190,
+      "sha256": "b286e0354358cd35c3e83559504a529e9d49ff1951783186b47512268f1e0612",
+      "source_sha256": "b286e0354358cd35c3e83559504a529e9d49ff1951783186b47512268f1e0612",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/meshtools.py",
+      "size": 12153,
+      "sha256": "54e4deea345074301eb7cc81b8220f8851e7b2d237fecb46dea9cd3c168b5c07",
+      "source_sha256": "5f0cc9753850e207d44df6611835d063b52392053453af209219881a8b5b1dda",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/svg2obj.py",
+      "size": 49437,
+      "sha256": "9171f8e7527174ccbeece472ef9ab07e21a89b0b445affa5f822f12cf55190fb",
+      "source_sha256": "9171f8e7527174ccbeece472ef9ab07e21a89b0b445affa5f822f12cf55190fb",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/bvh_import.py",
+      "size": 25091,
+      "sha256": "2596bb45a8314b0412bdd208a46c3ea63875efe3745e51894710021e24d043d8",
+      "source_sha256": "2596bb45a8314b0412bdd208a46c3ea63875efe3745e51894710021e24d043d8",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/camera_changer.py",
+      "size": 4109,
+      "sha256": "1ae6d53f326800b9de8c07e5fcc91fd895b9fa8c9763e46c58af548f4153fb58",
+      "source_sha256": "9ab409f8b740f17ac1620f66b0e6edfb1aa20d6b80b59285f9ea9b9a59d5b60c",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/colladaExport14.py",
+      "size": 3794,
+      "sha256": "68c17449fc01f395bbedabfc2354132655e80e31cb175717b8ccb672c1a77d7e",
+      "comparison": "archive_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/colladaImport14.py",
+      "size": 3770,
+      "sha256": "cd40725f9fb7867bb215a328833e7587d5c627ec7e1a129ca00227c6c0d1f553",
+      "comparison": "archive_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/collada_export.py",
+      "size": 126089,
+      "sha256": "fcdc9826a743bce9699f8e6ab59f5ab86258b64e8b5317c77d8020ec31bfac54",
+      "comparison": "archive_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/collada_import.py",
+      "size": 42144,
+      "sha256": "7db7322a2c54c33890e6bc3da359465539e42f0e24229c4cd1a2cdf81ba0aa16",
+      "comparison": "archive_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/config.py",
+      "size": 21616,
+      "sha256": "cd3b1bab3ac6a21139b9979051e7ad15d336a31140f1d2a8451ee1556bd4f22e",
+      "source_sha256": "fabf71a78e73b2acf4cc20dbc10ea18a6409f7509d794d6432c12bc4c7ef3aa9",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/console.py",
+      "size": 27705,
+      "sha256": "d0b6189b783787144894b124e39fcf2977c84ebf27aa5316c746fbd924b64e6f",
+      "source_sha256": "d0b6189b783787144894b124e39fcf2977c84ebf27aa5316c746fbd924b64e6f",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/discombobulator.py",
+      "size": 51503,
+      "sha256": "dd7de402d50a881da66bd5b1cf091cb7e0c3b169ca695af270be50b0267626bb",
+      "source_sha256": "1a59867896fa82362dec53e842e6f94125d259dc49bbdfb0276040d929f9186a",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/envelope_symmetry.py",
+      "size": 5556,
+      "sha256": "1a67389a8a3c2a5b452f8c84b7dd59626a14f148c0fa5be0654da60b2887b2ac",
+      "source_sha256": "d7bab806c2fdfa4854e6a9ad214f1cfd15d51d8cde3a574ce4d636e01dd8257e",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/export-iv-0.1.py",
+      "size": 8632,
+      "sha256": "62ab31d928c26ea9b74704e4542d1628f58e1269ed46e2ec235485e7374f73ef",
+      "source_sha256": "62ab31d928c26ea9b74704e4542d1628f58e1269ed46e2ec235485e7374f73ef",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/export_cal3d.py",
+      "size": 38036,
+      "sha256": "1c7114925d87e826f7f185c0c7e4d3089af93813c06fdb6d6f5e9a905742904a",
+      "source_sha256": "1c7114925d87e826f7f185c0c7e4d3089af93813c06fdb6d6f5e9a905742904a",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/export_fbx.py",
+      "size": 101703,
+      "sha256": "4720c1f3e3eb3a13636f713f54002b45db191360b85e15690386cdb26fbbf86a",
+      "source_sha256": "4720c1f3e3eb3a13636f713f54002b45db191360b85e15690386cdb26fbbf86a",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/export_lightwave_motion.py",
+      "size": 4371,
+      "sha256": "b63abedbc221641b25cc64264b39c59aec8ce0bccc7ca5f8ae42cb68d2905a5c",
+      "source_sha256": "9cda6757290bf20741a3d3ec95f23d5057628903cdd129907395a622a43438d4",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/export_map.py",
+      "size": 10941,
+      "sha256": "bdca9d6ed3ab6ab1ea4f4f2750dc94db3ac99a03f49fee61936c47421daf8ed6",
+      "source_sha256": "bdca9d6ed3ab6ab1ea4f4f2750dc94db3ac99a03f49fee61936c47421daf8ed6",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/export_mdd.py",
+      "size": 4605,
+      "sha256": "6e6ae97240d5f223810812b128065c5165a7622bd4e1f0c5f1c530a2c54c1f84",
+      "source_sha256": "6e6ae97240d5f223810812b128065c5165a7622bd4e1f0c5f1c530a2c54c1f84",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/export_obj.py",
+      "size": 21204,
+      "sha256": "730ae58041c0795236a461e17d20432733f1fcaf3902029c9b6856901a877fa8",
+      "source_sha256": "730ae58041c0795236a461e17d20432733f1fcaf3902029c9b6856901a877fa8",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/faceselect_same_weights.py",
+      "size": 2885,
+      "sha256": "f7c9f58c87edbbe8f33513c4e42b53b66948d77ac9bc800d78390510ebbae90f",
+      "source_sha256": "f7c9f58c87edbbe8f33513c4e42b53b66948d77ac9bc800d78390510ebbae90f",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/flt_export.py",
+      "size": 23465,
+      "sha256": "1f71a48baf3f7aa4cc48b00e20bc84f865a5b3fedaac0e910460e270db86c0a3",
+      "source_sha256": "1f71a48baf3f7aa4cc48b00e20bc84f865a5b3fedaac0e910460e270db86c0a3",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/flt_filewalker.py",
+      "size": 8299,
+      "sha256": "b7c02171a27fdc4f941e30a1061c30825eca7a64ceeba0645732fe4e0fd4ae6c",
+      "source_sha256": "b7c02171a27fdc4f941e30a1061c30825eca7a64ceeba0645732fe4e0fd4ae6c",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/flt_import.py",
+      "size": 56591,
+      "sha256": "0cd2a848328b910ceff4056d1a50ab84d4ec8a8171a0aa3f19288c15f5dff745",
+      "source_sha256": "0cd2a848328b910ceff4056d1a50ab84d4ec8a8171a0aa3f19288c15f5dff745",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/help_bpy_api.py",
+      "size": 1565,
+      "sha256": "d637ab2774f4fc021b258b37996ef231e346c7b74ebe7db406f133582e260ddb",
+      "source_sha256": "d637ab2774f4fc021b258b37996ef231e346c7b74ebe7db406f133582e260ddb",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/help_browser.py",
+      "size": 18306,
+      "sha256": "cb87e1cf3967a5bac6620bf92f8c44f5f275b192402025ce69d4d2baa5319fd7",
+      "source_sha256": "088dbd863fc8807b54dd3602a088576e1c96cbe46b3c7a3cc282edb83a94a4df",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/help_getting_started.py",
+      "size": 1554,
+      "sha256": "7d613c42be68e0a1a140952d33b8318db64fba16c078c9b1ba3d12f8cc3efc54",
+      "source_sha256": "60bc76577a3628044fdd6f84eaef3cfa3d5fa0f01b5aba25ec847248580c43d6",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/help_manual.py",
+      "size": 1468,
+      "sha256": "2d4bfe0ba184cd38da2e7b294e5d18fd4259fb22a3f8151504f583d3063f65b7",
+      "source_sha256": "2d4bfe0ba184cd38da2e7b294e5d18fd4259fb22a3f8151504f583d3063f65b7",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/help_release_notes.py",
+      "size": 1515,
+      "sha256": "4b1ebde1f9390747a84be15329b4b2c0d38399de079956e3d9aeb38c14aef7f8",
+      "source_sha256": "4b1ebde1f9390747a84be15329b4b2c0d38399de079956e3d9aeb38c14aef7f8",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/help_tutorials.py",
+      "size": 1490,
+      "sha256": "d3103e2d1d78469a4f805c61266173a9eb17a27d6a21383d746ced711ad71348",
+      "source_sha256": "d3103e2d1d78469a4f805c61266173a9eb17a27d6a21383d746ced711ad71348",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/help_web_blender.py",
+      "size": 1437,
+      "sha256": "d96f459772c4d2e913cb55fb9fd93661098f291e958dfb829d17e3a69c51c617",
+      "source_sha256": "d96f459772c4d2e913cb55fb9fd93661098f291e958dfb829d17e3a69c51c617",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/help_web_devcomm.py",
+      "size": 1446,
+      "sha256": "62ff41852ebb1b854e9dc05b89cd3728a89c040faadc5a8253badf501c32a519",
+      "source_sha256": "62ff41852ebb1b854e9dc05b89cd3728a89c040faadc5a8253badf501c32a519",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/help_web_eshop.py",
+      "size": 1464,
+      "sha256": "bc846114a17e37a41bce0cb4e12d4d80716dcf556f9d4d23f9ae19e0360971be",
+      "source_sha256": "bc846114a17e37a41bce0cb4e12d4d80716dcf556f9d4d23f9ae19e0360971be",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/help_web_usercomm.py",
+      "size": 1447,
+      "sha256": "d51bd5b5f70d60cf459bff1726726b9a157d39321309893c895f4e96c0a8003b",
+      "source_sha256": "d51bd5b5f70d60cf459bff1726726b9a157d39321309893c895f4e96c0a8003b",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/hotkeys.py",
+      "size": 33102,
+      "sha256": "f8bdb2c1e778f20654a651e2a341899db43c5773be22af77d1b2d111af05fe7f",
+      "source_sha256": "f8bdb2c1e778f20654a651e2a341899db43c5773be22af77d1b2d111af05fe7f",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/image_auto_layout.py",
+      "size": 13263,
+      "sha256": "7e69e3044153ae2e522bb72c256dc7e2f71196875482fa220dc6381e88e8e457",
+      "source_sha256": "7e69e3044153ae2e522bb72c256dc7e2f71196875482fa220dc6381e88e8e457",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/image_billboard.py",
+      "size": 7826,
+      "sha256": "91ef3d2ee5dcfe04749f8d5fa72e43b20094bbaafd694f77a9013caf1a9c630e",
+      "source_sha256": "91ef3d2ee5dcfe04749f8d5fa72e43b20094bbaafd694f77a9013caf1a9c630e",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/image_edit.py",
+      "size": 3934,
+      "sha256": "6bdafb0b6376e6fe06c80b9b2e0556e0d0eaed8397e0759f5cd082075e6754d4",
+      "source_sha256": "6bdafb0b6376e6fe06c80b9b2e0556e0d0eaed8397e0759f5cd082075e6754d4",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/image_find_paths.py",
+      "size": 4304,
+      "sha256": "fc920bf7904f2319d92a2e46e534b396deef6765447aebd1b7b7b8416ec9a185",
+      "source_sha256": "fc920bf7904f2319d92a2e46e534b396deef6765447aebd1b7b7b8416ec9a185",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/import_dxf.py",
+      "size": 143375,
+      "sha256": "50499f393978f2fc9e18d2ece9558c6e076ebd3dfaa23179fe99ddf86e6631ab",
+      "source_sha256": "50499f393978f2fc9e18d2ece9558c6e076ebd3dfaa23179fe99ddf86e6631ab",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/import_mdd.py",
+      "size": 4491,
+      "sha256": "08b2eeceef6847d4512e9f7a4616a9ad59f5aa85f7a239213348745d4570deba",
+      "source_sha256": "08b2eeceef6847d4512e9f7a4616a9ad59f5aa85f7a239213348745d4570deba",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/import_obj.py",
+      "size": 27857,
+      "sha256": "107c89f1e0f933a0eef12834508858c90426590c748cf7523007f67bd0853e25",
+      "source_sha256": "107c89f1e0f933a0eef12834508858c90426590c748cf7523007f67bd0853e25",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/lightwave_export.py",
+      "size": 22233,
+      "sha256": "f752e85f651748f8fc572ce0d399169ab5ddc8e3a3fe1e25a2fc6edca832508f",
+      "source_sha256": "c598dd4f8292b00d22da83039216013cf0f021e480df3700aaf30ba79f017382",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/lightwave_import.py",
+      "size": 62770,
+      "sha256": "81c46242a20045ffeb4faabbece61c40e5776977268055583278a7bc6d83eb8e",
+      "source_sha256": "81c46242a20045ffeb4faabbece61c40e5776977268055583278a7bc6d83eb8e",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/md2_export.py",
+      "size": 40451,
+      "sha256": "1640c9c1be712316937289f2d752030fe867b3b1e2a60b67289ee67e97280efa",
+      "source_sha256": "1640c9c1be712316937289f2d752030fe867b3b1e2a60b67289ee67e97280efa",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/md2_import.py",
+      "size": 17661,
+      "sha256": "36eb526fe6f3a074bf5901506aea87790070030f5d87aef1c883397d74e14bd0",
+      "source_sha256": "36eb526fe6f3a074bf5901506aea87790070030f5d87aef1c883397d74e14bd0",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/mesh_boneweight_copy.py",
+      "size": 9087,
+      "sha256": "8cc380589105621fc080642f07651635d41f3a8f1dbe28d46ba6d5fa243eb5f5",
+      "source_sha256": "8cc380589105621fc080642f07651635d41f3a8f1dbe28d46ba6d5fa243eb5f5",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/mesh_cleanup.py",
+      "size": 12008,
+      "sha256": "df60e6c3db408cccb85e3bbba360809e3e50c3cc9391398b78db6a0e02a9b68b",
+      "source_sha256": "df60e6c3db408cccb85e3bbba360809e3e50c3cc9391398b78db6a0e02a9b68b",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/mesh_edges2curves.py",
+      "size": 3967,
+      "sha256": "026bfbb14512d55f8e9628b0ea878fb51491c9db8c7f38a19649ddeb92e918f7",
+      "source_sha256": "026bfbb14512d55f8e9628b0ea878fb51491c9db8c7f38a19649ddeb92e918f7",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/mesh_mirror_tool.py",
+      "size": 13072,
+      "sha256": "c6a3ac265557dce6ac7c26ab11fdd7caf6f574f97d8e4299e26b207a10959a84",
+      "source_sha256": "c6a3ac265557dce6ac7c26ab11fdd7caf6f574f97d8e4299e26b207a10959a84",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/mesh_poly_reduce.py",
+      "size": 4923,
+      "sha256": "ea1779a5837c5779ee8b27d231583f0d19780afd6d6193f279a1e355a7da14f3",
+      "source_sha256": "ea1779a5837c5779ee8b27d231583f0d19780afd6d6193f279a1e355a7da14f3",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/mesh_skin.py",
+      "size": 17394,
+      "sha256": "3f11839d86d557d191520875993dcecd3fe8818fa312f4e78b668fa01c47798d",
+      "source_sha256": "666e3f3d75639088ca797b38de17fe42281323c08c7fb6243eac1a3462ca3111",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/mesh_solidify.py",
+      "size": 9447,
+      "sha256": "5f4e3d7bacffd6f0135facc2ca6dab12190d7762f7b0be60261122ab35d2b6e0",
+      "source_sha256": "5f4e3d7bacffd6f0135facc2ca6dab12190d7762f7b0be60261122ab35d2b6e0",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/mesh_unfolder.py",
+      "size": 48228,
+      "sha256": "ee08955fd84564a725e7cc0a700ec958e4a4ff0f5544da7e306751e76c6e4f91",
+      "source_sha256": "ee08955fd84564a725e7cc0a700ec958e4a4ff0f5544da7e306751e76c6e4f91",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/mesh_wire.py",
+      "size": 7971,
+      "sha256": "942f683c2320d3f5c377ad31e1c77aaadcac53c5dbfd2b544f090ff46c96394c",
+      "source_sha256": "942f683c2320d3f5c377ad31e1c77aaadcac53c5dbfd2b544f090ff46c96394c",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/obdatacopier.py",
+      "size": 5617,
+      "sha256": "dffd30ba7b37ed97c56fa5e5d4b05b825bd8af9719149164b0527b95f6282caa",
+      "source_sha256": "dffd30ba7b37ed97c56fa5e5d4b05b825bd8af9719149164b0527b95f6282caa",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/object_apply_def.py",
+      "size": 5082,
+      "sha256": "173a2711a46510ed3e13ca6fc8a0ef156e693bf260fb2dcd8184cbf4b452eb39",
+      "source_sha256": "8cae2a19bfe689fc7ae91335e39f69ae2008c1ae6e195f18aed944635d8b7429",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/object_batch_name_edit.py",
+      "size": 7603,
+      "sha256": "603a286501ef4a8f59abdeafdea419d3d5f27798511bcd8ea3827f79ec2b9792",
+      "source_sha256": "23be4699d5440115ab4947a9802790f60a5834068fa6782eb0320a3145fa8e11",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/object_cookie_cutter.py",
+      "size": 18204,
+      "sha256": "6cf99adf10c622d1a1ef55c4c81cf7b5d62737725ef93ef8034e99ccb0c0cadc",
+      "source_sha256": "6cf99adf10c622d1a1ef55c4c81cf7b5d62737725ef93ef8034e99ccb0c0cadc",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/object_drop.py",
+      "size": 6663,
+      "sha256": "097422fa89bed9bf0aa409b209f359c5701b66820834253b903ff193f1db0ce3",
+      "source_sha256": "097422fa89bed9bf0aa409b209f359c5701b66820834253b903ff193f1db0ce3",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/object_find.py",
+      "size": 5756,
+      "sha256": "3adb05a888c69d6c657005966ebf9fee5905a8da62cc560fddd260811f50be6b",
+      "source_sha256": "3adb05a888c69d6c657005966ebf9fee5905a8da62cc560fddd260811f50be6b",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/object_random_loc_sz_rot.py",
+      "size": 3978,
+      "sha256": "83618b19fb94d36978bae480ef030bd2da2a92edb555fa7a6fae1b5ac7b35039",
+      "source_sha256": "83618b19fb94d36978bae480ef030bd2da2a92edb555fa7a6fae1b5ac7b35039",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/object_sel2dupgroup.py",
+      "size": 2169,
+      "sha256": "5145eb08c51f8f0633e7d76c49e3504db0604aab1c9f647f2533ca3444cef42e",
+      "source_sha256": "5145eb08c51f8f0633e7d76c49e3504db0604aab1c9f647f2533ca3444cef42e",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/off_export.py",
+      "size": 3249,
+      "sha256": "738b1d04a4acc774dd77f3acd8d0b214a2571ed8ae27f0b32a123a0a18e314ba",
+      "source_sha256": "738b1d04a4acc774dd77f3acd8d0b214a2571ed8ae27f0b32a123a0a18e314ba",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/off_import.py",
+      "size": 5271,
+      "sha256": "36d1daa8fa1d4036377e6fa0e4f999585a76ea3b2a4af5489f34b063a2df9f33",
+      "source_sha256": "36d1daa8fa1d4036377e6fa0e4f999585a76ea3b2a4af5489f34b063a2df9f33",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/paths_import.py",
+      "size": 1909,
+      "sha256": "cac06cc9e04e35a242ed397119782ecc3cbe6c90f47259892ac117dee3cda651",
+      "source_sha256": "cac06cc9e04e35a242ed397119782ecc3cbe6c90f47259892ac117dee3cda651",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/ply_export.py",
+      "size": 6740,
+      "sha256": "9e27395c4d03df4cad948ff951af5c0fedbaf851462d96f678e5ac13b3bacda9",
+      "source_sha256": "9e27395c4d03df4cad948ff951af5c0fedbaf851462d96f678e5ac13b3bacda9",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/ply_import.py",
+      "size": 8759,
+      "sha256": "1d406b4b4d7dbd7b2b2f67f3bf61e39e60295c77e639f9936c0325034d0c61cf",
+      "source_sha256": "1d406b4b4d7dbd7b2b2f67f3bf61e39e60295c77e639f9936c0325034d0c61cf",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/raw_export.py",
+      "size": 3117,
+      "sha256": "53c450cc8f0c0db4c543c92ee5ac09b7868922a827a2684f1fee65e194acd737",
+      "source_sha256": "523f6b275e65ae659a6ca97ad6f335c94008d848f8964bc28d64fb25527010e2",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/raw_import.py",
+      "size": 3688,
+      "sha256": "cf64a77e004e9fa0344cf510b9d6e0ac7561a15ef6ae645f194d97b534f90f55",
+      "source_sha256": "d844b1952404843b80cee2e30bb614240a19e8fa43bb9e4a0368cd7ef3629d94",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/renameobjectbyblock.py",
+      "size": 4852,
+      "sha256": "e5b1288113317452737f02f60eb8b37d39b9ebc1f591dfd5fdcb868c2af06f70",
+      "source_sha256": "e5b1288113317452737f02f60eb8b37d39b9ebc1f591dfd5fdcb868c2af06f70",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/rvk1_torvk2.py",
+      "size": 10121,
+      "sha256": "8d7abb7f3c075926cc5ce4583128c754e851d25a780b5fe8b96d336fe44d20c0",
+      "source_sha256": "8d7abb7f3c075926cc5ce4583128c754e851d25a780b5fe8b96d336fe44d20c0",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/save_theme.py",
+      "size": 4672,
+      "sha256": "a43de495314c5a8e9afd20de8e7d975001fa94fca0724fce09be77490b590084",
+      "source_sha256": "7f74974213290bd88a0b7ec1569387b71a2ff92d03b6ea9b24256f63489409ab",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/scripttemplate_mesh_edit.py",
+      "size": 2100,
+      "sha256": "4bbaa1848b13d3d31345f6091e9de46f11a38e7e32ced46808e01976f430b369",
+      "source_sha256": "4bbaa1848b13d3d31345f6091e9de46f11a38e7e32ced46808e01976f430b369",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/scripttemplate_object_edit.py",
+      "size": 1714,
+      "sha256": "192925071fdd40704f74332b0e98413c694e097ef7c5935ec7634b135a90d270",
+      "source_sha256": "192925071fdd40704f74332b0e98413c694e097ef7c5935ec7634b135a90d270",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/slp_import.py",
+      "size": 3551,
+      "sha256": "6a49f57d0ac16ad5b4f6c3a7fb3933ff2e5be38abb75a922403e2a83ef46df97",
+      "source_sha256": "2d6bda8d5ac1f9bc099bb2b12d06599b79ef2ec8fc01af1c3f68f9925f549645",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/sysinfo.py",
+      "size": 8573,
+      "sha256": "9850e0a86026a62f73b417312a90a092a964c679df25e60cea74ef692520a943",
+      "source_sha256": "722060d8bc48cc70caaf93b6f47855b6ad5e079d7aa89be623d408f8dfd475df",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/unweld.py",
+      "size": 7175,
+      "sha256": "4a350cb1bbcdc20197c91da226f42fe6685629ec3efe2bc5091a0680c63be37d",
+      "source_sha256": "93120d6d1d0118ecf8155cba82086d93a3c2eef99e6aa111c036ef6f28915b2a",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/uv_export.py",
+      "size": 13088,
+      "sha256": "efb205aa3761d93a70bc736ae72aafeb1234f2f6e3b2b483479a0bb931937224",
+      "source_sha256": "3c991fe580b93d91093cc0f627220f00cc5feb44f64d5b09b960647495ab8287",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/uv_from_adjacent.py",
+      "size": 3679,
+      "sha256": "8977644b97037f95bcdeab55e5f3382dcfe32acd9058e4bb73007c9c1239e757",
+      "source_sha256": "8977644b97037f95bcdeab55e5f3382dcfe32acd9058e4bb73007c9c1239e757",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/uv_seams_from_islands.py",
+      "size": 1996,
+      "sha256": "cd03d5a0fc2aec8b7e67ed9031303255227248872a35dc8a71ecaae69d57a90e",
+      "source_sha256": "cd03d5a0fc2aec8b7e67ed9031303255227248872a35dc8a71ecaae69d57a90e",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/uvcalc_follow_active_coords.py",
+      "size": 7829,
+      "sha256": "f536be1d383cc1fc47d2424480368242f555d2bd27e66e773c76daa14f427553",
+      "source_sha256": "f536be1d383cc1fc47d2424480368242f555d2bd27e66e773c76daa14f427553",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/uvcalc_from_adjacent.py",
+      "size": 3693,
+      "sha256": "f27be7d781a18e39a729bccc7d3d588d3670d9381529e2953e05723aacaedffa",
+      "source_sha256": "f27be7d781a18e39a729bccc7d3d588d3670d9381529e2953e05723aacaedffa",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/uvcalc_lightmap.py",
+      "size": 14908,
+      "sha256": "c5676ba085fac059705ccb392161c090b101b4edc076f663a48531a926e127f6",
+      "source_sha256": "c5676ba085fac059705ccb392161c090b101b4edc076f663a48531a926e127f6",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/uvcalc_quad_clickproj.py",
+      "size": 7669,
+      "sha256": "719e317687677368a7d491dfc620daf37248952a023aeaa3fdc91e2827cd301c",
+      "source_sha256": "719e317687677368a7d491dfc620daf37248952a023aeaa3fdc91e2827cd301c",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/uvcalc_smart_project.py",
+      "size": 33028,
+      "sha256": "42a18d81fafae36c94a87e2ec3923c562ee4e16f0ebb8c658c00805705df6c81",
+      "source_sha256": "42a18d81fafae36c94a87e2ec3923c562ee4e16f0ebb8c658c00805705df6c81",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/uvcopy.py",
+      "size": 3434,
+      "sha256": "af9ad6c3181e1cd1d2b254012945e861c201dba34c1e7f5bae47e332267d549f",
+      "source_sha256": "af9ad6c3181e1cd1d2b254012945e861c201dba34c1e7f5bae47e332267d549f",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/vertexpaint_from_material.py",
+      "size": 2280,
+      "sha256": "9ad5207f7ce0640a1656be79735903ffc166f35ebc445c441eccd2777ff474d5",
+      "source_sha256": "9ad5207f7ce0640a1656be79735903ffc166f35ebc445c441eccd2777ff474d5",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/vertexpaint_gradient.py",
+      "size": 1382,
+      "sha256": "72ef61bcffa249f94e675f6110d12bc40430b422e93b4ddb22d315d1f04510a4",
+      "source_sha256": "72ef61bcffa249f94e675f6110d12bc40430b422e93b4ddb22d315d1f04510a4",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/vertexpaint_selfshadow_ao.py",
+      "size": 5462,
+      "sha256": "65d149ab0b9f662d2149f1150aa946e4c6974ad5c6add6fea78e1a24faa943e7",
+      "source_sha256": "65d149ab0b9f662d2149f1150aa946e4c6974ad5c6add6fea78e1a24faa943e7",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/vrml97_export.py",
+      "size": 37236,
+      "sha256": "7834d11df2696dccc057d72cdc7d38820d6e7c63fb77ae53f4bbfad28097b6dd",
+      "source_sha256": "e79f6d86001d787d0a0d609d25da3e921e1f711ecf1dd7a8874c733780a150eb",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/weightpaint_clean.py",
+      "size": 3344,
+      "sha256": "8971665074f962b65c56b43e2522ef39c66a9041b9d060f8c2ad4e03cd584b47",
+      "source_sha256": "8971665074f962b65c56b43e2522ef39c66a9041b9d060f8c2ad4e03cd584b47",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/weightpaint_copy.py",
+      "size": 2631,
+      "sha256": "114c1bec372a8185064e8e5af210decc055588b7671d3659b625f5b102f362e8",
+      "source_sha256": "114c1bec372a8185064e8e5af210decc055588b7671d3659b625f5b102f362e8",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/weightpaint_envelope_assign.py",
+      "size": 6376,
+      "sha256": "c6f178bc977c734da62539a32d7ef4a53801c20c1f550fb1aaed8ff9c27ae79a",
+      "source_sha256": "c6f178bc977c734da62539a32d7ef4a53801c20c1f550fb1aaed8ff9c27ae79a",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/weightpaint_gradient.py",
+      "size": 1891,
+      "sha256": "b4b6ca988deb73fd3862b133e8e0334adc49e988c37ab4dc019e9020b2a5cfec",
+      "source_sha256": "b4b6ca988deb73fd3862b133e8e0334adc49e988c37ab4dc019e9020b2a5cfec",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/weightpaint_grow_shrink.py",
+      "size": 4140,
+      "sha256": "a2e38bb2e0bed233a59ca43c5fae79406c87615fa323c340363b91e963e2025f",
+      "source_sha256": "a2e38bb2e0bed233a59ca43c5fae79406c87615fa323c340363b91e963e2025f",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/weightpaint_normalize.py",
+      "size": 3502,
+      "sha256": "9fea29e2feaed05853ee80e70a419aa6d0974b1cf7595475330864163009fa70",
+      "source_sha256": "9fea29e2feaed05853ee80e70a419aa6d0974b1cf7595475330864163009fa70",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/widgetwizard.py",
+      "size": 22818,
+      "sha256": "17abb39a82cdde28574c2ff94f01e4f733453c615b879dc91dccb86dc120e7df",
+      "source_sha256": "17abb39a82cdde28574c2ff94f01e4f733453c615b879dc91dccb86dc120e7df",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/x3d_export.py",
+      "size": 44067,
+      "sha256": "ff345c0c07e88cdbf3a8cfb07e03b0d71d0daded02151ea599e7edcfe99dd813",
+      "source_sha256": "9fcef04e122572ec294fc443010842b8e42c59b5f0b0e5cf0a44f3950a6cea6f",
+      "comparison": "svn_id_comment_only"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/xfig_export.py",
+      "size": 6827,
+      "sha256": "9626e57983541a13e32a21d36f2b4fc2ed011c1527b1bc5ff30df9c72dc5e7cb",
+      "source_sha256": "9626e57983541a13e32a21d36f2b4fc2ed011c1527b1bc5ff30df9c72dc5e7cb",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/.blender/scripts/xsi_export.py",
+      "size": 30435,
+      "sha256": "cb523b19e8e6cf8d6aa43cad47e38f2f1e580524fcfb94a2f29221a520e9c0e3",
+      "source_sha256": "cb523b19e8e6cf8d6aa43cad47e38f2f1e580524fcfb94a2f29221a520e9c0e3",
+      "comparison": "identical"
+    },
+    {
+      "path": "Blender.app/Contents/MacOS/blender",
+      "size": 13391944,
+      "sha256": "2c19298f4a62cbe29221f742f2e6f4c8992df5696b4e9042f81e03943352408e"
+    },
+    {
+      "path": "Blender.app/Contents/PkgInfo",
+      "size": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/.Blanguages",
+      "size": 302,
+      "sha256": "e28aa34559350ab7bb7326b6e4a67142960723a8bd8600adc32e33bf536931b7"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/blender file icon.icns",
+      "size": 48363,
+      "sha256": "de9066a5c6f1f5ed36f7eefb5e67bd98eda790d0c0bdcaa26ae3a0460da7704f"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/blender icon.icns",
+      "size": 43688,
+      "sha256": "db7863605bfd49a02da0c71748e92b5ec9a0173b2dd990e6f41b0726a82b6aa2"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/ar/LC_MESSAGES/blender.mo",
+      "size": 5783,
+      "sha256": "b78c289571d16385fd9560b3ba2d9739816bd5620439f3b9a5b42c63576212c0"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/bg/LC_MESSAGES/blender.mo",
+      "size": 282592,
+      "sha256": "e26630d11dbe8fd76fffc2aa4d89c633516cef63bd9f0d2eea9b85e24454a09a"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/ca/LC_MESSAGES/blender.mo",
+      "size": 7278,
+      "sha256": "1daa0a6a2c38be1190083704c5eccd78ceef811dfeb03198dcb1fc154bce9661"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/cs/LC_MESSAGES/blender.mo",
+      "size": 68795,
+      "sha256": "98c1bbaf736e1d1ac2e23e50667f324a07edc4449c8c37fb2954b509be5318f2"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/de/LC_MESSAGES/blender.mo",
+      "size": 7272,
+      "sha256": "720ba37cd34e30900be6343dccc001da39d73ccbe197d56311faa938cd1c3c8b"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/es/LC_MESSAGES/blender.mo",
+      "size": 18631,
+      "sha256": "c9d7a4dd5f0cfac99ac6ea6672b06ef672c98746e7b994326fdeb33c0292de1b"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/fi/LC_MESSAGES/blender.mo",
+      "size": 6442,
+      "sha256": "334b61698c18ad479e31e66675a3cc7a0955c17a7a9564dfbae45cafdd8fab48"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/fr/LC_MESSAGES/blender.mo",
+      "size": 73059,
+      "sha256": "6491e96f8046d34996fca1ab104d818cf71495f0d3edce9e9452cc99372a9ea7"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/hr/LC_MESSAGES/blender.mo",
+      "size": 42913,
+      "sha256": "def655951a892af97b96ab749e61d2b44b314766c0f3ee9951c4408c54c35d27"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/hr_HR/LC_MESSAGES/blender.mo",
+      "size": 43169,
+      "sha256": "3feb850453a086bb44fdcfeb1d284a59c6610046d78f929928b96dbc3c2d1534"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/it/LC_MESSAGES/blender.mo",
+      "size": 316905,
+      "sha256": "f57ca21e902cc909bcf64930a2b5956881c4f707e02191016d745e3cb88e7a6e"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/ja/LC_MESSAGES/blender.mo",
+      "size": 7325,
+      "sha256": "fd1cb45c96933517ba028b8943d159943725a2c08d03ef103c79be2099f56219"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/nl/LC_MESSAGES/blender.mo",
+      "size": 6101,
+      "sha256": "aeedc48104e11027fb220f2107978f34acf48e74b742527f71d5f9682006f2e7"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/pl/LC_MESSAGES/blender.mo",
+      "size": 75914,
+      "sha256": "4a01b10e715572d15e1c036a154046c4c7d6b18c8eef045459b05d2e06adac7d"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/pt_br/LC_MESSAGES/blender.mo",
+      "size": 9691,
+      "sha256": "a2968b600e6114eb3461953017987130db660bf379af26a8a3fbfc800b142648"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/ro/LC_MESSAGES/blender.mo",
+      "size": 151550,
+      "sha256": "c07adf346475553d57e5da676dd0bb3f80f4ae1c0e4c6dde1c8ab9d90aa14028"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/ru/LC_MESSAGES/blender.mo",
+      "size": 298623,
+      "sha256": "baccd972d94daeaefa2a223f9867b795df6963a412bca227cc97a6e2db39ad90"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/sr/LC_MESSAGES/blender.mo",
+      "size": 107043,
+      "sha256": "1d83718fa38385278f4aa77133efcd817ff8700773c36de9fbc401a4d12bec52"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/sr@Latn/LC_MESSAGES/blender.mo",
+      "size": 82493,
+      "sha256": "ef7103dcfabb78279a2a001b0bb9ba6be3e164b18519440c2244bc11edaf937e"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/sv/LC_MESSAGES/blender.mo",
+      "size": 7059,
+      "sha256": "6cea21a88fc8d718952061e81d6427ec80ea06116f143e69f5fee70120c4dfeb"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/uk/LC_MESSAGES/blender.mo",
+      "size": 178008,
+      "sha256": "34e7b8dd010663006c40383e102d0efe8208f88980a5a0b2bd838eb4ce120691"
+    },
+    {
+      "path": "Blender.app/Contents/Resources/locale/zh_cn/LC_MESSAGES/blender.mo",
+      "size": 349166,
+      "sha256": "9cbfa8820021f5982c5edba8838d0b7f20276b639c8ba9f3d83ca33c49952e03"
+    },
+    {
+      "path": "BlenderQuickStart.pdf",
+      "size": 374612,
+      "sha256": "873e11acffbb9014ad36584fe823287145b06f1b1c801735832763962ba7ecc7"
+    },
+    {
+      "path": "GPL-license.txt",
+      "size": 17987,
+      "sha256": "2ab06d2335f9781f1a485c78a557e6c61b6c24e118caad4d4210c46426bbce95"
+    },
+    {
+      "path": "Python-license.txt",
+      "size": 2391,
+      "sha256": "a848f3dadda877d875a7611c961774c93ca14bc65316c51aa4c96ec24066cb56"
+    },
+    {
+      "path": "blender.html",
+      "size": 28099,
+      "sha256": "c038945d1f1ef671452972cf586273d56a4f62b9dcb94806ee23ec4c24a0a8dd"
+    },
+    {
+      "path": "blenderplayer",
+      "size": 14103208,
+      "sha256": "2a466450804f0e9e05d63fc888d450a6d97d4f25d72bdc4c4b9fc5761631c86b"
+    },
+    {
+      "path": "copyright.txt",
+      "size": 5716,
+      "sha256": "7fe9c3b479174b6116de01a6b36d325dc30ec56ccec3fff184f961fcb0392879"
+    },
+    {
+      "path": "plugins/Makefile",
+      "size": 1334,
+      "sha256": "af0f557da4280c266e6e9ea26c0903390e454bc4d1c8a7e27d1dd2f9618f1749"
+    },
+    {
+      "path": "plugins/bmake",
+      "size": 3432,
+      "sha256": "79687ceb68821070666b8d90bb3492b9c3f4cf82845fe95d6cc8fd84d7f6dba5"
+    },
+    {
+      "path": "plugins/include/documentation.h",
+      "size": 2960,
+      "sha256": "052acd37495afcc48b1b338eaebd59b519830b036e42e4ccb2fde1d8fd028066"
+    },
+    {
+      "path": "plugins/include/externdef.h",
+      "size": 1719,
+      "sha256": "de12300e368ebf437c229776ee7c86788536f1c345d43de9cb393f9d57c6f380"
+    },
+    {
+      "path": "plugins/include/floatpatch.h",
+      "size": 2617,
+      "sha256": "233f2660a4ba1576ed1a0c98e7cecc097c10aa5cbb6e4e59cd6982fc6ffc5f9a"
+    },
+    {
+      "path": "plugins/include/iff.h",
+      "size": 7970,
+      "sha256": "00e14bdf3ade9b8cf81c7a5e95b16b11212f4a85f59e85f4c01ae83b1d79e7fb"
+    },
+    {
+      "path": "plugins/include/plugin.h",
+      "size": 3147,
+      "sha256": "4d6d30adeb0001571a220368a305a4c3ed91976a31b6502618fcded04b63bb68"
+    },
+    {
+      "path": "plugins/include/util.h",
+      "size": 3518,
+      "sha256": "78e10352a9edf6e544c790938c5884dcedc834e6327e19fb10a6aac4f4eb5553"
+    },
+    {
+      "path": "plugins/sequence/Makefile",
+      "size": 1281,
+      "sha256": "1d898ab2f3670c1a4d95561fe64ed0fb69f2349e8aea09ff421509d5a941a763"
+    },
+    {
+      "path": "plugins/sequence/blur.c",
+      "size": 6677,
+      "sha256": "6adbc8640eda5ad547a00f360c1bf63799ae332a656ec8dcdde75dfeac2997c4"
+    },
+    {
+      "path": "plugins/sequence/blur.so",
+      "size": 1045728,
+      "sha256": "abf49745aa26478e5bcc1ccbbca151c74f6e2f3bb40c0e7ae7c235d01ac0634a"
+    },
+    {
+      "path": "plugins/sequence/color-correction-hsv.c",
+      "size": 5495,
+      "sha256": "add3827fc5691a2c1f8c5eb20e1e87b693b258a75e68d8a3b3fb656392f08355"
+    },
+    {
+      "path": "plugins/sequence/color-correction-hsv.so",
+      "size": 12752,
+      "sha256": "65d3318fd4c13971aa5635ecd93fcbb3e7c61179bc1d397633955fc5f9e2cdc8"
+    },
+    {
+      "path": "plugins/sequence/color-correction-yuv.c",
+      "size": 5163,
+      "sha256": "f17cbf9ba78abc3b17d435d3f235b89360c66f3b89877cf3002e41df32b889d1"
+    },
+    {
+      "path": "plugins/sequence/color-correction-yuv.so",
+      "size": 12728,
+      "sha256": "b7acf5db8445b6a4e53ebba78dc20e23b2768cf78256fb553b200400c35e65b5"
+    },
+    {
+      "path": "plugins/sequence/dnr.c",
+      "size": 3398,
+      "sha256": "980620b73d8fb985a582b792328061ab9fecd881acaced6f4925bbb3bac39c3a"
+    },
+    {
+      "path": "plugins/sequence/dnr.so",
+      "size": 12896,
+      "sha256": "11e1108b88e4af31bb0f7ba3e46ed522cbe19be17f80d72daf6906ffbbbd86c8"
+    },
+    {
+      "path": "plugins/sequence/gamma.c",
+      "size": 4540,
+      "sha256": "862c4367e352a631f587cae48913c69d5cb02e67158dfffbf2e6bcb7de9ecb5f"
+    },
+    {
+      "path": "plugins/sequence/gamma.so",
+      "size": 12760,
+      "sha256": "b85f35bfff2434de0a6865e657992fe8fb4299c3964ad9c820059be4ca0970cf"
+    },
+    {
+      "path": "plugins/sequence/scatter.c",
+      "size": 6043,
+      "sha256": "67c290388beab99bce16eea2440a1c65a9fc7b7a5ff7f064e1918054dc94556e"
+    },
+    {
+      "path": "plugins/sequence/scatter.so",
+      "size": 12804,
+      "sha256": "99fdc07a81159964660125ff4f5899da9fada56f17d212535c36e1580e052c74"
+    },
+    {
+      "path": "plugins/texture/Makefile",
+      "size": 1281,
+      "sha256": "1d898ab2f3670c1a4d95561fe64ed0fb69f2349e8aea09ff421509d5a941a763"
+    },
+    {
+      "path": "plugins/texture/clouds2.c",
+      "size": 4163,
+      "sha256": "5f31247d76be274901857583b000f6d8091bef642011dfbb7c3cd73100d29d15"
+    },
+    {
+      "path": "plugins/texture/clouds2.so",
+      "size": 1045660,
+      "sha256": "15dbb9c648158c8a60a2ce42e2088f15f284500a9cdb88c15c987886d663e5c2"
+    },
+    {
+      "path": "plugins/texture/tiles.c",
+      "size": 4323,
+      "sha256": "8832b52bd8db92d35c674cd7a7f64915dac96dfe31b9f30e6d7da5f6c1c478ee"
+    },
+    {
+      "path": "plugins/texture/tiles.so",
+      "size": 1045688,
+      "sha256": "924c19d5a0b6baf51892690539cb6dc74a5332a3abc63e1d4b8ca7b4a154ef24"
+    },
+    {
+      "path": "release_245.txt",
+      "size": 422,
+      "sha256": "ef04fa8258a0fa6fa89ac7716234ef65df3cb6e73d12bda22e04391512d6b389"
+    }
+  ]
+}

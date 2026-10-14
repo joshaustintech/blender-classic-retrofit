@@ -4,6 +4,7 @@
 #include "PyObjectPlus.h"
 #include "BL_Material.h"
 #include "BL_Texture.h"
+#include "RAS_GLExtensionManager.h"
 // --
 #include "MT_Matrix4x4.h"
 #include "MT_Matrix3x3.h"
@@ -96,7 +97,7 @@ private:
 	typedef std::vector<BL_Uniform*>	BL_UniformVec;
 	typedef std::vector<BL_DefUniform*>	BL_UniformVecDef;
 
-	unsigned int	mShader;			// Shader object 
+	GLhandleARB	mShader;			// Shader object
 	int				mPass;				// 1.. unused
 	bool			mOk;				// Valid and ok
 	bool			mUse;				// ...
@@ -167,7 +168,7 @@ public:
 	void				SetSampler(int loc, int unit);
 
 	const bool			Ok()const;
-	unsigned int		GetProg();
+	GLhandleARB		GetProg();
 	void				SetProg(bool enable);
 	int					GetAttribute(){return mAttr;};
 

@@ -213,8 +213,8 @@ void LbmFsgrSolver::stepMain() {
 
 #ifndef WIN32
 	// good indicator for instabilities
-	if( (!finite(mMxvx)) || (!finite(mMxvy)) || (!finite(mMxvz)) ) { CAUSE_PANIC; }
-	if( (!finite(mCurrentMass)) || (!finite(mCurrentVolume)) ) { CAUSE_PANIC; }
+	if( (!isfinite(mMxvx)) || (!isfinite(mMxvy)) || (!isfinite(mMxvz)) ) { CAUSE_PANIC; }
+	if( (!isfinite(mCurrentMass)) || (!isfinite(mCurrentVolume)) ) { CAUSE_PANIC; }
 #endif // WIN32
 
 	// output total step time
@@ -247,7 +247,7 @@ void LbmFsgrSolver::stepMain() {
 	if(!this->mPanic){ FSGR_FORIJK_BOUNDS(mMaxRefine) { \
 		if(RFLAG(mMaxRefine,i,j,k,mLevel[mMaxRefine].setCurr)&(CFFluid|CFInter)) { \
 		for(int l=0;l<dTotalNum;l++) { \
-			if(!finite(QCELL(mMaxRefine,i,j,k,mLevel[mMaxRefine].setCurr,l))) { errMsg("NNOFIN"," "<<str<<" at "<<PRINT_IJK<<" l"<<l<<" "); }\
+			if(!isfinite(QCELL(mMaxRefine,i,j,k,mLevel[mMaxRefine].setCurr,l))) { errMsg("NNOFIN"," "<<str<<" at "<<PRINT_IJK<<" l"<<l<<" "); }\
 		}/*for*/ \
 		}/*if*/ \
 	} }

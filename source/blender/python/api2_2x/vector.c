@@ -318,13 +318,13 @@ static PyObject *Vector_repr(VectorObject * self)
 /*---------------------SEQUENCE PROTOCOLS------------------------
   ----------------------------len(object)------------------------
   sequence length*/
-static int Vector_len(VectorObject * self)
+static Py_ssize_t Vector_len(VectorObject * self)
 {
 	return self->size;
 }
 /*----------------------------object[]---------------------------
   sequence accessor (get)*/
-static PyObject *Vector_item(VectorObject * self, int i)
+static PyObject *Vector_item(VectorObject * self, Py_ssize_t i)
 {
 	if(i < 0 || i >= self->size)
 		return EXPP_ReturnPyObjError(PyExc_IndexError,
@@ -335,7 +335,7 @@ static PyObject *Vector_item(VectorObject * self, int i)
 }
 /*----------------------------object[]-------------------------
   sequence accessor (set)*/
-static int Vector_ass_item(VectorObject * self, int i, PyObject * ob)
+static int Vector_ass_item(VectorObject * self, Py_ssize_t i, PyObject * ob)
 {
 	
 	if(!(PyNumber_Check(ob))) { /* parsed item not a number */
@@ -353,7 +353,7 @@ static int Vector_ass_item(VectorObject * self, int i, PyObject * ob)
 
 /*----------------------------object[z:y]------------------------
   sequence slice (get) */
-static PyObject *Vector_slice(VectorObject * self, int begin, int end)
+static PyObject *Vector_slice(VectorObject * self, Py_ssize_t begin, Py_ssize_t end)
 {
 	PyObject *list = NULL;
 	int count;
@@ -372,7 +372,7 @@ static PyObject *Vector_slice(VectorObject * self, int begin, int end)
 }
 /*----------------------------object[z:y]------------------------
   sequence slice (set) */
-static int Vector_ass_slice(VectorObject * self, int begin, int end,
+static int Vector_ass_slice(VectorObject * self, Py_ssize_t begin, Py_ssize_t end,
 			     PyObject * seq)
 {
 	int i, y, size = 0;
@@ -875,7 +875,7 @@ PyObject* Vector_richcmpr(PyObject *objectA, PyObject *objectB, int comparison_t
 }
 /*-----------------PROTCOL DECLARATIONS--------------------------*/
 static PySequenceMethods Vector_SeqMethods = {
-	(inquiry) Vector_len,						/* sq_length */
+	(lenfunc) Vector_len,						/* sq_length */
 	(binaryfunc) 0,								/* sq_concat */
 	(intargfunc) 0,								/* sq_repeat */
 	(intargfunc) Vector_item,					/* sq_item */

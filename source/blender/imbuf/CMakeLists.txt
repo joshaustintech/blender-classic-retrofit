@@ -58,4 +58,7 @@ IF(WITH_FFMPEG)
 ENDIF(WITH_FFMPEG)
 
 BLENDERLIB(bf_imbuf "${SRC}" "${INC}")
+IF(APPLE)
+  TARGET_COMPILE_DEFINITIONS(bf_imbuf PRIVATE BLENDER_TIFF_LIBRARY="${TIFF_LIBRARY}")
+ENDIF()
 #env.BlenderLib ( libname = 'bf_imbuf', sources = sources, includes = Split(incs), defines = defs, libtype=['core','player'], priority = [80, 40] )

@@ -41,16 +41,16 @@
 /*****************************************************************************/
 static PyObject *charRGBA_repr( BPy_charRGBA * self );
 
-static int charRGBALength( BPy_charRGBA * self );
+static Py_ssize_t charRGBALength( BPy_charRGBA * self );
 
 static PyObject *charRGBASubscript( BPy_charRGBA * self, PyObject * key );
 static int charRGBAAssSubscript( BPy_charRGBA * self, PyObject * who,
 				 PyObject * cares );
 
-static PyObject *charRGBAItem( BPy_charRGBA * self, int i );
-static int charRGBAAssItem( BPy_charRGBA * self, int i, PyObject * ob );
-static PyObject *charRGBASlice( BPy_charRGBA * self, int begin, int end );
-static int charRGBAAssSlice( BPy_charRGBA * self, int begin, int end,
+static PyObject *charRGBAItem( BPy_charRGBA * self, Py_ssize_t i );
+static int charRGBAAssItem( BPy_charRGBA * self, Py_ssize_t i, PyObject * ob );
+static PyObject *charRGBASlice( BPy_charRGBA * self, Py_ssize_t begin, Py_ssize_t end );
+static int charRGBAAssSlice( BPy_charRGBA * self, Py_ssize_t begin, Py_ssize_t end,
 			     PyObject * seq );
 static PyObject *charRGBA_getColor( BPy_charRGBA * self, void * type);
 static int charRGBA_setColor( BPy_charRGBA * self, PyObject * value, void * type);
@@ -59,7 +59,7 @@ static int charRGBA_setColor( BPy_charRGBA * self, PyObject * value, void * type
 /* Python charRGBA_Type Mapping Methods table:			*/
 /*****************************************************************************/
 static PyMappingMethods charRGBAAsMapping = {
-	( inquiry ) charRGBALength,	/* mp_length                            */
+	( lenfunc ) charRGBALength,	/* mp_length                            */
 	( binaryfunc ) charRGBASubscript,	/* mp_subscript                 */
 	( objobjargproc ) charRGBAAssSubscript,	/* mp_ass_subscript */
 };
@@ -68,7 +68,7 @@ static PyMappingMethods charRGBAAsMapping = {
 /* Python charRGBA_Type Sequence Methods table:			*/
 /*****************************************************************************/
 static PySequenceMethods charRGBAAsSequence = {
-	( inquiry ) charRGBALength,	/* sq_length */
+	( lenfunc ) charRGBALength,	/* sq_length */
 	( binaryfunc ) 0,	/* sq_concat */
 	( intargfunc ) 0,	/* sq_repeat */
 	( intargfunc ) charRGBAItem,	/* sq_item */
@@ -307,7 +307,7 @@ static int charRGBA_setColor( BPy_charRGBA * self, PyObject * value,
 /*		 These functions provide code to access charRGBA objects as  */
 /*		  mappings.						 */
 /*****************************************************************************/
-static int charRGBALength( BPy_charRGBA * self )
+static Py_ssize_t charRGBALength( BPy_charRGBA * self )
 {
 	return 4;
 }
@@ -318,7 +318,7 @@ static PyObject *charRGBASubscript( BPy_charRGBA * self, PyObject * key )
 	int i;
 
 	if( PyNumber_Check( key ) )
-		return charRGBAItem( self, ( int ) PyInt_AsLong( key ) );
+		return charRGBAItem( self, ( Py_ssize_t ) PyInt_AsLong( key ) );
 
 	if( !PyArg_ParseTuple( key, "s", &name ) )
 		return EXPP_ReturnPyObjError( PyExc_TypeError,
@@ -349,7 +349,7 @@ static int charRGBAAssSubscript( BPy_charRGBA * self, PyObject * key,
 					    "value to assign must be a number" );
 
 	if( PyNumber_Check( key ) )
-		return charRGBAAssItem( self, ( int ) PyInt_AsLong( key ), v );
+		return charRGBAAssItem( self, ( Py_ssize_t ) PyInt_AsLong( key ), v );
 
 	if( !PyArg_Parse( key, "s", &name ) )
 		return EXPP_ReturnIntError( PyExc_TypeError,
@@ -376,7 +376,7 @@ static int charRGBAAssSubscript( BPy_charRGBA * self, PyObject * key,
 /*	     These functions provide code to access charRGBA objects as	 */
 /*		 sequences.						*/
 /*****************************************************************************/
-static PyObject *charRGBAItem( BPy_charRGBA * self, int i )
+static PyObject *charRGBAItem( BPy_charRGBA * self, Py_ssize_t i )
 {
 	if( i < 0 || i >= 4 )
 		return EXPP_ReturnPyObjError( PyExc_IndexError,
@@ -385,7 +385,7 @@ static PyObject *charRGBAItem( BPy_charRGBA * self, int i )
 	return Py_BuildValue( "b", *( self->rgba[i] ) );
 }
 
-static PyObject *charRGBASlice( BPy_charRGBA * self, int begin, int end )
+static PyObject *charRGBASlice( BPy_charRGBA * self, Py_ssize_t begin, Py_ssize_t end )
 {
 	PyObject *list;
 	int count;
@@ -406,7 +406,7 @@ static PyObject *charRGBASlice( BPy_charRGBA * self, int begin, int end )
 	return list;
 }
 
-static int charRGBAAssItem( BPy_charRGBA * self, int i, PyObject * ob )
+static int charRGBAAssItem( BPy_charRGBA * self, Py_ssize_t i, PyObject * ob )
 {
 	if( i < 0 || i >= 4 )
 		return EXPP_ReturnIntError( PyExc_IndexError,
@@ -421,7 +421,7 @@ static int charRGBAAssItem( BPy_charRGBA * self, int i, PyObject * ob )
 	return 0;
 }
 
-static int charRGBAAssSlice( BPy_charRGBA * self, int begin, int end,
+static int charRGBAAssSlice( BPy_charRGBA * self, Py_ssize_t begin, Py_ssize_t end,
 			     PyObject * seq )
 {
 	int count;

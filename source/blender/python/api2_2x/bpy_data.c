@@ -124,7 +124,7 @@ static PyObject *LibBlockSeq_CreatePyObject( Link *iter, int type )
 }
 
 
-static int LibBlockSeq_len( BPy_LibBlockSeq * self )
+static Py_ssize_t LibBlockSeq_len( BPy_LibBlockSeq * self )
 {
 	ListBase *lb = wich_libbase(G.main, self->type);
 	return BLI_countlist( lb );
@@ -189,7 +189,7 @@ static PyObject * LibBlockSeq_subscript(BPy_LibBlockSeq * self, PyObject *key)
 }
 
 static PyMappingMethods LibBlockSeq_as_mapping = {
-	( inquiry ) LibBlockSeq_len,	/* mp_length */
+	( lenfunc ) LibBlockSeq_len,	/* mp_length */
 	( binaryfunc ) LibBlockSeq_subscript,	/* mp_subscript */
 	( objobjargproc ) 0,	/* mp_ass_subscript */
 };

@@ -303,13 +303,13 @@ static char EulerObject_doc[] = "This is a wrapper for euler objects.";
 //---------------------SEQUENCE PROTOCOLS------------------------
 //----------------------------len(object)------------------------
 //sequence length
-static int Euler_len(EulerObject * self)
+static Py_ssize_t Euler_len(EulerObject * self)
 {
 	return 3;
 }
 //----------------------------object[]---------------------------
 //sequence accessor (get)
-static PyObject *Euler_item(EulerObject * self, int i)
+static PyObject *Euler_item(EulerObject * self, Py_ssize_t i)
 {
 	if(i < 0 || i >= 3)
 		return EXPP_ReturnPyObjError(PyExc_IndexError,
@@ -320,7 +320,7 @@ static PyObject *Euler_item(EulerObject * self, int i)
 }
 //----------------------------object[]-------------------------
 //sequence accessor (set)
-static int Euler_ass_item(EulerObject * self, int i, PyObject * ob)
+static int Euler_ass_item(EulerObject * self, Py_ssize_t i, PyObject * ob)
 {
 	PyObject *f = NULL;
 
@@ -341,7 +341,7 @@ static int Euler_ass_item(EulerObject * self, int i, PyObject * ob)
 }
 //----------------------------object[z:y]------------------------
 //sequence slice (get)
-static PyObject *Euler_slice(EulerObject * self, int begin, int end)
+static PyObject *Euler_slice(EulerObject * self, Py_ssize_t begin, Py_ssize_t end)
 {
 	PyObject *list = NULL;
 	int count;
@@ -360,7 +360,7 @@ static PyObject *Euler_slice(EulerObject * self, int begin, int end)
 }
 //----------------------------object[z:y]------------------------
 //sequence slice (set)
-static int Euler_ass_slice(EulerObject * self, int begin, int end,
+static int Euler_ass_slice(EulerObject * self, Py_ssize_t begin, Py_ssize_t end,
 			     PyObject * seq)
 {
 	int i, y, size = 0;
@@ -402,7 +402,7 @@ static int Euler_ass_slice(EulerObject * self, int begin, int end,
 }
 //-----------------PROTCOL DECLARATIONS--------------------------
 static PySequenceMethods Euler_SeqMethods = {
-	(inquiry) Euler_len,						/* sq_length */
+	(lenfunc) Euler_len,						/* sq_length */
 	(binaryfunc) 0,								/* sq_concat */
 	(intargfunc) 0,								/* sq_repeat */
 	(intargfunc) Euler_item,					/* sq_item */

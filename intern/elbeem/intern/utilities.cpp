@@ -49,7 +49,7 @@ int  getElbeemState(void) {
 	return gElbeemState;
 }
 int  isSimworldOk(void) {
-	return (getElbeemState>=0);
+	return (getElbeemState()>=0);
 }
 
 // last error as string, acces with get/setElbeemErrorString

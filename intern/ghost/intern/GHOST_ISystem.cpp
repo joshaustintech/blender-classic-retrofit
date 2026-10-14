@@ -47,7 +47,7 @@
 #	include "GHOST_SystemWin32.h"
 #else
 #	ifdef __APPLE__
-#		include "GHOST_SystemCarbon.h"
+#		include "GHOST_SystemCocoa.h"
 #	else
 #		include "GHOST_SystemX11.h"
 #	endif
@@ -65,7 +65,7 @@ GHOST_TSuccess GHOST_ISystem::createSystem()
 		m_system = new GHOST_SystemWin32 ();
 #else
 #	ifdef __APPLE__
-        m_system = new GHOST_SystemCarbon ();
+        m_system = new GHOST_SystemCocoa ();
 #	else 
 		m_system = new GHOST_SystemX11 ();
 #	endif

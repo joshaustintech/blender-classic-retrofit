@@ -976,14 +976,14 @@ static PyObject *MetaElem_CreatePyObject( MetaElem *metaelem )
 	return (PyObject *)elem;
 }
 
-static int MetaElemSeq_len( BPy_MetaElemSeq * self )
+static Py_ssize_t MetaElemSeq_len( BPy_MetaElemSeq * self )
 {
 	return BLI_countlist( &( self->bpymetaball->metaball->elems ) );
 }
 
 
 static PySequenceMethods MetaElemSeq_as_sequence = {
-	( inquiry ) MetaElemSeq_len,	/* sq_length */
+	( lenfunc ) MetaElemSeq_len,	/* sq_length */
 	( binaryfunc ) 0,	/* sq_concat */
 	( intargfunc ) 0,	/* sq_repeat */
 	( intargfunc ) 0,	/* sq_item */

@@ -356,7 +356,7 @@ BPy_DefinitionMap *Node_CreateOutputDefMap(bNode *node) {
 
 /***************************************/
 
-static int sockinmap_len ( BPy_SockMap * self) {
+static Py_ssize_t sockinmap_len ( BPy_SockMap * self) {
 	int a = 0;
 	if(self->typeinfo) {
 		while(self->typeinfo->inputs[a].type!=-1)
@@ -418,7 +418,7 @@ PyObject *sockinmap_subscript(BPy_SockMap *self, PyObject *idx) {
 
 /* read only */
 static PyMappingMethods sockinmap_as_mapping = {
-	( inquiry ) sockinmap_len,  /* mp_length */
+	( lenfunc ) sockinmap_len,  /* mp_length */
 	( binaryfunc ) sockinmap_subscript, /* mp_subscript */
 	( objobjargproc ) 0 /* mp_ass_subscript */
 };
@@ -505,7 +505,7 @@ PyTypeObject SockInMap_Type = {
 	NULL
 };
 
-static int sockoutmap_len ( BPy_SockMap * self) {
+static Py_ssize_t sockoutmap_len ( BPy_SockMap * self) {
 	int a = 0;
 	if(self->typeinfo) {
 		while(self->typeinfo->outputs[a].type!=-1)
@@ -578,7 +578,7 @@ static int sockoutmap_assign_subscript(BPy_SockMap *self, PyObject *idx, PyObjec
 
 /* write only */
 static PyMappingMethods sockoutmap_as_mapping = {
-	( inquiry ) sockoutmap_len,  /* mp_length */
+	( lenfunc ) sockoutmap_len,  /* mp_length */
 	( binaryfunc ) 0, /* mp_subscript */
 	( objobjargproc ) sockoutmap_assign_subscript /* mp_ass_subscript */
 };

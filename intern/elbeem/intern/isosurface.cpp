@@ -932,9 +932,9 @@ void IsoSurface::smoothSurface(float sigma, bool normSmooth)
 
 			// NT important, check this...
 #ifndef WIN32
-			if(! finite(cornerareas[i][0]) ) cornerareas[i][0]=1e-6;
-			if(! finite(cornerareas[i][1]) ) cornerareas[i][1]=1e-6;
-			if(! finite(cornerareas[i][2]) ) cornerareas[i][2]=1e-6;
+			if(! isfinite(cornerareas[i][0]) ) cornerareas[i][0]=1e-6;
+			if(! isfinite(cornerareas[i][1]) ) cornerareas[i][1]=1e-6;
+			if(! isfinite(cornerareas[i][2]) ) cornerareas[i][2]=1e-6;
 #else // WIN32
 			// FIXME check as well...
 			if(! (cornerareas[i][0]>=0.0) ) cornerareas[i][0]=1e-6;
@@ -1091,9 +1091,9 @@ void IsoSurface::smoothNormals(float sigma) {
 
 			// NT important, check this...
 #ifndef WIN32
-			if(! finite(cornerareas[i][0]) ) cornerareas[i][0]=1e-6;
-			if(! finite(cornerareas[i][1]) ) cornerareas[i][1]=1e-6;
-			if(! finite(cornerareas[i][2]) ) cornerareas[i][2]=1e-6;
+			if(! isfinite(cornerareas[i][0]) ) cornerareas[i][0]=1e-6;
+			if(! isfinite(cornerareas[i][1]) ) cornerareas[i][1]=1e-6;
+			if(! isfinite(cornerareas[i][2]) ) cornerareas[i][2]=1e-6;
 #else // WIN32
 			// FIXME check as well...
 			if(! (cornerareas[i][0]>=0.0) ) cornerareas[i][0]=1e-6;

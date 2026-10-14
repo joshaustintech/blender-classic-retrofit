@@ -61,7 +61,7 @@ struct Contact
 	MT_Point3 pos;
 	
 	// Sort objects by height
-	bool operator()(const Contact *a, const Contact *b)
+	bool operator()(const Contact *a, const Contact *b) const
 	{
 		return a->pos[2] < b->pos[2];
 	}

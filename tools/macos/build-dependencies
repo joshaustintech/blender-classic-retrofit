@@ -1,0 +1,43 @@
+#!/bin/bash
+# Build native dependencies in a private directory; leave system Python untouched.
+set -eu
+retrofit_root=${1:?Usage: build-dependencies /absolute/path/to/dependency-directory}
+case "$retrofit_root" in /*) ;; *) echo 'Dependency directory must be absolute' >&2; exit 1;; esac
+retrofit_script_dir=$(cd "$(dirname "$0")" && pwd)
+retrofit_jobs=${RETROFIT_JOBS:-4}
+retrofit_sources="$retrofit_root/sources"
+retrofit_prefix="$retrofit_root/prefix"
+mkdir -p "$retrofit_sources"
+fetch() {
+  local name=$1 url=$2 digest=$3
+  if [ ! -f "$retrofit_sources/$name" ]; then
+    curl --fail --location --max-time 120 "$url" --output "$retrofit_sources/$name"
+  fi
+  printf '%s  %s\n' "$digest" "$retrofit_sources/$name" | shasum -a 256 -c -
+}
+fetch Python-2.5.6.tar.bz2 https://www.python.org/ftp/python/2.5.6/Python-2.5.6.tar.bz2 57e04484de051decd4741fb4a4a3f543becc9a219af8b8063b5541e270f26dcc
+fetch freetype-2.13.3.tar.xz https://download.savannah.gnu.org/releases/freetype/freetype-2.13.3.tar.xz 0550350666d427c74daeb85d5ac7bb353acba5f76956395995311a9c6f063289
+fetch SDL2-2.32.10.tar.gz https://www.libsdl.org/release/SDL2-2.32.10.tar.gz 5f5993c530f084535c65a6879e9b26ad441169b3e25d789d83287040a9ca5165
+fetch sdl12-compat-1.2.68.tar.gz https://codeload.github.com/libsdl-org/sdl12-compat/tar.gz/refs/tags/release-1.2.68 63c6e4dcc1154299e6f363c872900be7f3dcb3e42b9f8f57e05442ec3d89d02d
+for archive in Python-2.5.6.tar.bz2 freetype-2.13.3.tar.xz SDL2-2.32.10.tar.gz sdl12-compat-1.2.68.tar.gz; do
+  tar -xf "$retrofit_sources/$archive" -C "$retrofit_sources"
+done
+(
+  cd "$retrofit_sources/Python-2.5.6"
+  patch -p1 < "$retrofit_script_dir/python25.patch"
+  ./configure --prefix="$retrofit_prefix" --disable-framework --disable-toolbox-glue
+  printf 'zlib zlibmodule.c -lz\n' > Modules/Setup.local
+  make -j"$retrofit_jobs"
+  make install
+  "$retrofit_prefix/bin/python2.5" -c 'import sys, math, zlib, xml.parsers.expat; assert sys.version_info[:2] == (2, 5); assert zlib.decompress(zlib.compress("native")) == "native"; print sys.version'
+)
+cmake -S "$retrofit_sources/freetype-2.13.3" -B "$retrofit_root/freetype-build" -DCMAKE_INSTALL_PREFIX="$retrofit_prefix" -DFT_DISABLE_HARFBUZZ=ON -DFT_DISABLE_BROTLI=ON -DBUILD_SHARED_LIBS=OFF
+cmake --build "$retrofit_root/freetype-build" --parallel "$retrofit_jobs"
+cmake --install "$retrofit_root/freetype-build"
+cmake -S "$retrofit_sources/SDL2-2.32.10" -B "$retrofit_root/sdl2-build" -DCMAKE_INSTALL_PREFIX="$retrofit_prefix" -DSDL_STATIC=OFF -DSDL_TEST=OFF
+cmake --build "$retrofit_root/sdl2-build" --parallel "$retrofit_jobs"
+cmake --install "$retrofit_root/sdl2-build"
+cmake -S "$retrofit_sources/sdl12-compat-release-1.2.68" -B "$retrofit_root/sdl12-build" -DCMAKE_INSTALL_PREFIX="$retrofit_prefix" -DCMAKE_PREFIX_PATH="$retrofit_prefix" -DSDL12TESTS=OFF
+cmake --build "$retrofit_root/sdl12-build" --parallel "$retrofit_jobs"
+cmake --install "$retrofit_root/sdl12-build"
+file "$retrofit_prefix/bin/python2.5" "$retrofit_prefix/lib/libSDL-1.2.0.dylib" "$retrofit_prefix/lib/libSDL2-2.0.dylib"

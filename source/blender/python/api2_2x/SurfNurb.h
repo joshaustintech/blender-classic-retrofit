@@ -62,7 +62,7 @@ PyObject *SurfNurb_Init( void );
 PyObject *SurfNurb_CreatePyObject( Nurb * bzt );
 Nurb *SurfNurb_FromPyObject( PyObject * pyobj );
 
-PyObject *SurfNurb_getPoint( BPy_SurfNurb * self, int index );
+PyObject *SurfNurb_getPoint( BPy_SurfNurb * self, Py_ssize_t index );
 PyObject *SurfNurb_pointAtIndex( Nurb * nurb, int index );
 
 #endif				/* EXPP_SURFNURB_H */

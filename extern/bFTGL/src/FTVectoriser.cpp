@@ -6,7 +6,7 @@
 #endif
 
 #ifdef __APPLE_CC__    
-    typedef GLvoid (*GLUTesselatorFunction)(...);
+    typedef GLvoid (*GLUTesselatorFunction)();
 #elif defined( __mips ) || defined( __linux__ ) || defined( __FreeBSD__ ) || defined( __OpenBSD__ ) || defined( __sun ) || defined (__CYGWIN__)
     typedef GLvoid (*GLUTesselatorFunction)();
 #elif defined ( WIN32)
@@ -140,7 +140,7 @@ void FTVectoriser::ProcessContours()
     for( short contourIndex = 0; contourIndex < ftContourCount; ++contourIndex)
     {
         FT_Vector* pointList = &outline.points[startIndex];
-        char* tagList = &outline.tags[startIndex];
+        char* tagList = reinterpret_cast<char*>(&outline.tags[startIndex]);
         
         endIndex = outline.contours[contourIndex];
         contourLength =  ( endIndex - startIndex) + 1;

@@ -1,0 +1,175 @@
+{
+  "archive_sha256": "5cc3f1ea2481bcc191626196f06cd21a92952e835a57c854b5974a8523736b46",
+  "files": [
+    {
+      "source": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/colladaImEx/__init__.py",
+      "path": "release/scripts/bpymodules/colladaImEx/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/colladaImEx/collada.py",
+      "path": "release/scripts/bpymodules/colladaImEx/collada.py",
+      "sha256": "f3f9be050ba9823e24c12df4b7a21a191b996a9cfb2b6a634073e4489de5d824"
+    },
+    {
+      "source": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/colladaImEx/cstartup.py",
+      "path": "release/scripts/bpymodules/colladaImEx/cstartup.py",
+      "sha256": "00e23c80c0c3965d123b6b168f88a319f87d863d12f5463c83d70d30cab9f069"
+    },
+    {
+      "source": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/colladaImEx/cutils.py",
+      "path": "release/scripts/bpymodules/colladaImEx/cutils.py",
+      "sha256": "8fbe1261b19b832125a1b72d8623010519ab87cd9f343d799881c3ce25f1a1f0"
+    },
+    {
+      "source": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/colladaImEx/helperObjects.py",
+      "path": "release/scripts/bpymodules/colladaImEx/helperObjects.py",
+      "sha256": "3ca25ea0678447df61439867ae596f59488a490327eae797afb48a2b4688efca"
+    },
+    {
+      "source": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/colladaImEx/logo.png",
+      "path": "release/scripts/bpymodules/colladaImEx/logo.png",
+      "sha256": "6c0cef52d9829194b3473397f6781c1c9c196ab4645d633d5ce4b39135add881"
+    },
+    {
+      "source": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/colladaImEx/translator.py",
+      "path": "release/scripts/bpymodules/colladaImEx/translator.py",
+      "sha256": "1388927dd5fbdd2ce7550b2f403751e803316be82a808212c7de46d3a7de9e12"
+    },
+    {
+      "source": "Blender.app/Contents/MacOS/.blender/scripts/bpymodules/colladaImEx/xmlUtils.py",
+      "path": "release/scripts/bpymodules/colladaImEx/xmlUtils.py",
+      "sha256": "487e352ff77b482b650dd8ac4fda9722d384d5a0edaf1f986d183927e5611473"
+    },
+    {
+      "source": "Blender.app/Contents/MacOS/.blender/scripts/colladaExport14.py",
+      "path": "release/scripts/colladaExport14.py",
+      "sha256": "68c17449fc01f395bbedabfc2354132655e80e31cb175717b8ccb672c1a77d7e"
+    },
+    {
+      "source": "Blender.app/Contents/MacOS/.blender/scripts/colladaImport14.py",
+      "path": "release/scripts/colladaImport14.py",
+      "sha256": "cd40725f9fb7867bb215a328833e7587d5c627ec7e1a129ca00227c6c0d1f553"
+    },
+    {
+      "source": "Blender.app/Contents/MacOS/.blender/scripts/collada_export.py",
+      "path": "release/scripts/collada_export.py",
+      "sha256": "fcdc9826a743bce9699f8e6ab59f5ab86258b64e8b5317c77d8020ec31bfac54"
+    },
+    {
+      "source": "Blender.app/Contents/MacOS/.blender/scripts/collada_import.py",
+      "path": "release/scripts/collada_import.py",
+      "sha256": "7db7322a2c54c33890e6bc3da359465539e42f0e24229c4cd1a2cdf81ba0aa16"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/ar/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/ar/LC_MESSAGES/blender.mo",
+      "sha256": "b78c289571d16385fd9560b3ba2d9739816bd5620439f3b9a5b42c63576212c0"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/bg/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/bg/LC_MESSAGES/blender.mo",
+      "sha256": "e26630d11dbe8fd76fffc2aa4d89c633516cef63bd9f0d2eea9b85e24454a09a"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/ca/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/ca/LC_MESSAGES/blender.mo",
+      "sha256": "1daa0a6a2c38be1190083704c5eccd78ceef811dfeb03198dcb1fc154bce9661"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/cs/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/cs/LC_MESSAGES/blender.mo",
+      "sha256": "98c1bbaf736e1d1ac2e23e50667f324a07edc4449c8c37fb2954b509be5318f2"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/de/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/de/LC_MESSAGES/blender.mo",
+      "sha256": "720ba37cd34e30900be6343dccc001da39d73ccbe197d56311faa938cd1c3c8b"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/es/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/es/LC_MESSAGES/blender.mo",
+      "sha256": "c9d7a4dd5f0cfac99ac6ea6672b06ef672c98746e7b994326fdeb33c0292de1b"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/fi/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/fi/LC_MESSAGES/blender.mo",
+      "sha256": "334b61698c18ad479e31e66675a3cc7a0955c17a7a9564dfbae45cafdd8fab48"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/fr/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/fr/LC_MESSAGES/blender.mo",
+      "sha256": "6491e96f8046d34996fca1ab104d818cf71495f0d3edce9e9452cc99372a9ea7"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/hr/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/hr/LC_MESSAGES/blender.mo",
+      "sha256": "def655951a892af97b96ab749e61d2b44b314766c0f3ee9951c4408c54c35d27"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/hr_HR/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/hr_HR/LC_MESSAGES/blender.mo",
+      "sha256": "3feb850453a086bb44fdcfeb1d284a59c6610046d78f929928b96dbc3c2d1534"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/it/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/it/LC_MESSAGES/blender.mo",
+      "sha256": "f57ca21e902cc909bcf64930a2b5956881c4f707e02191016d745e3cb88e7a6e"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/ja/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/ja/LC_MESSAGES/blender.mo",
+      "sha256": "fd1cb45c96933517ba028b8943d159943725a2c08d03ef103c79be2099f56219"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/nl/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/nl/LC_MESSAGES/blender.mo",
+      "sha256": "aeedc48104e11027fb220f2107978f34acf48e74b742527f71d5f9682006f2e7"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/pl/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/pl/LC_MESSAGES/blender.mo",
+      "sha256": "4a01b10e715572d15e1c036a154046c4c7d6b18c8eef045459b05d2e06adac7d"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/pt_br/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/pt_br/LC_MESSAGES/blender.mo",
+      "sha256": "a2968b600e6114eb3461953017987130db660bf379af26a8a3fbfc800b142648"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/ro/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/ro/LC_MESSAGES/blender.mo",
+      "sha256": "c07adf346475553d57e5da676dd0bb3f80f4ae1c0e4c6dde1c8ab9d90aa14028"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/ru/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/ru/LC_MESSAGES/blender.mo",
+      "sha256": "baccd972d94daeaefa2a223f9867b795df6963a412bca227cc97a6e2db39ad90"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/sr/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/sr/LC_MESSAGES/blender.mo",
+      "sha256": "1d83718fa38385278f4aa77133efcd817ff8700773c36de9fbc401a4d12bec52"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/sr@Latn/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/sr@Latn/LC_MESSAGES/blender.mo",
+      "sha256": "ef7103dcfabb78279a2a001b0bb9ba6be3e164b18519440c2244bc11edaf937e"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/sv/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/sv/LC_MESSAGES/blender.mo",
+      "sha256": "6cea21a88fc8d718952061e81d6427ec80ea06116f143e69f5fee70120c4dfeb"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/uk/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/uk/LC_MESSAGES/blender.mo",
+      "sha256": "34e7b8dd010663006c40383e102d0efe8208f88980a5a0b2bd838eb4ce120691"
+    },
+    {
+      "source": "Blender.app/Contents/Resources/locale/zh_cn/LC_MESSAGES/blender.mo",
+      "path": "bin/.blender/locale/zh_cn/LC_MESSAGES/blender.mo",
+      "sha256": "9cbfa8820021f5982c5edba8838d0b7f20276b639c8ba9f3d83ca33c49952e03"
+    }
+  ]
+}

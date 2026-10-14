@@ -119,7 +119,7 @@ static PyObject *Ipo_getChannel( BPy_Ipo * self );
 static PyObject *Ipo_copy( BPy_Ipo * self );
 static int Ipo_setChannel( BPy_Ipo * self, PyObject * args );
 
-static int Ipo_length( BPy_Ipo * inst );
+static Py_ssize_t Ipo_length( BPy_Ipo * inst );
 static PyObject *Ipo_getIpoCurveByName( BPy_Ipo * self, PyObject * key );
 static int Ipo_setIpoCurveByName( BPy_Ipo * self, PyObject * key, 
 		PyObject * value );
@@ -208,13 +208,13 @@ static PyGetSetDef BPy_Ipo_getseters[] = {
 /* Python Ipo_Type Mapping Methods table:                                    */
 /*****************************************************************************/
 static PyMappingMethods Ipo_as_mapping = {
-	( inquiry ) Ipo_length,	/* mp_length        */
+	( lenfunc ) Ipo_length,	/* mp_length        */
 	( binaryfunc ) Ipo_getIpoCurveByName,	/* mp_subscript     */
 	( objobjargproc ) Ipo_setIpoCurveByName,	/* mp_ass_subscript */
 };
 
 static PySequenceMethods Ipo_as_sequence = {
-	( inquiry ) 0,	/* sq_length */
+	( lenfunc ) 0,	/* sq_length */
 	( binaryfunc ) 0,	/* sq_concat */
 	( intargfunc ) 0,	/* sq_repeat */
 	( intargfunc ) 0,	/* sq_item */
@@ -1358,7 +1358,7 @@ Ipo *Ipo_FromPyObject( PyObject * pyobj )
 /* Description: This function counts the number of curves accessible for the */
 /*              PyObject.                                                    */
 /*****************************************************************************/
-static int Ipo_length( BPy_Ipo * self )
+static Py_ssize_t Ipo_length( BPy_Ipo * self )
 {
 	IpoCurve *icu;
 	int len = 0;

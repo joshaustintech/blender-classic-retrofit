@@ -63,15 +63,15 @@ static PyObject *Method_Buffer( PyObject * self, PyObject * args );
 
 /* Buffer sequence methods */
 
-static int Buffer_len( PyObject * self );
-static PyObject *Buffer_item( PyObject * self, int i );
-static PyObject *Buffer_slice( PyObject * self, int begin, int end );
-static int Buffer_ass_item( PyObject * self, int i, PyObject * v );
-static int Buffer_ass_slice( PyObject * self, int begin, int end,
+static Py_ssize_t Buffer_len( PyObject * self );
+static PyObject *Buffer_item( PyObject * self, Py_ssize_t i );
+static PyObject *Buffer_slice( PyObject * self, Py_ssize_t begin, Py_ssize_t end );
+static int Buffer_ass_item( PyObject * self, Py_ssize_t i, PyObject * v );
+static int Buffer_ass_slice( PyObject * self, Py_ssize_t begin, Py_ssize_t end,
 			     PyObject * seq );
 
 static PySequenceMethods Buffer_SeqMethods = {
-	( inquiry ) Buffer_len,	/*sq_length */
+	( lenfunc ) Buffer_len,	/*sq_length */
 	( binaryfunc ) 0,	/*sq_concat */
 	( intargfunc ) 0,	/*sq_repeat */
 	( intargfunc ) Buffer_item,	/*sq_item */
@@ -226,17 +226,17 @@ static PyObject *Method_Buffer (PyObject *self, PyObject *args)
 
 /*@ Buffer sequence methods */
 
-static int Buffer_len(PyObject *self)
+static Py_ssize_t Buffer_len(PyObject *self)
 {
 	Buffer *buf= (Buffer *) self;
 	return buf->dimensions[0];
 }
 
-static PyObject *Buffer_item(PyObject *self, int i)
+static PyObject *Buffer_item(PyObject *self, Py_ssize_t i)
 {
 	Buffer *buf= (Buffer *) self;
 
-	if (i >= buf->dimensions[0]) {
+	if (i < 0 || i >= buf->dimensions[0]) {
 		PyErr_SetString(PyExc_IndexError, "array index out of range");
 		return NULL;
 	}
@@ -278,7 +278,7 @@ static PyObject *Buffer_item(PyObject *self, int i)
 	return NULL;
 }
 
-static PyObject *Buffer_slice(PyObject *self, int begin, int end)
+static PyObject *Buffer_slice(PyObject *self, Py_ssize_t begin, Py_ssize_t end)
 {
 	Buffer *buf= (Buffer *) self;
 	PyObject *list;
@@ -297,11 +297,11 @@ static PyObject *Buffer_slice(PyObject *self, int begin, int end)
 	return list;
 }
 
-static int Buffer_ass_item(PyObject *self, int i, PyObject *v)
+static int Buffer_ass_item(PyObject *self, Py_ssize_t i, PyObject *v)
 {
 	Buffer *buf= (Buffer *) self;
 	
-	if (i >= buf->dimensions[0]) {
+	if (i < 0 || i >= buf->dimensions[0]) {
 		PyErr_SetString(PyExc_IndexError, "array assignment index out of range");
 		return -1;
 	}
@@ -336,7 +336,7 @@ static int Buffer_ass_item(PyObject *self, int i, PyObject *v)
 	return 0;
 }
 
-static int Buffer_ass_slice(PyObject *self, int begin, int end, PyObject *seq)
+static int Buffer_ass_slice(PyObject *self, Py_ssize_t begin, Py_ssize_t end, PyObject *seq)
 {
 	Buffer *buf= (Buffer *) self;
 	PyObject *item;

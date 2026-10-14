@@ -170,7 +170,7 @@ static PyGetSetDef BPy_IDGroup_getseters[] = {
 	 {NULL, NULL, NULL, NULL, NULL}
 };
 	 
-int BPy_IDGroup_Map_Len(BPy_IDProperty *self)
+Py_ssize_t BPy_IDGroup_Map_Len(BPy_IDProperty *self)
 {
 	if (self->prop->type != IDP_GROUP)
 		return EXPP_ReturnIntError( PyExc_TypeError,
@@ -524,7 +524,7 @@ static struct PyMethodDef BPy_IDGroup_methods[] = {
 };
 		
 PyMappingMethods BPy_IDGroup_Mapping = {
-	(inquiry)BPy_IDGroup_Map_Len, 			/*inquiry mp_length */
+	(lenfunc)BPy_IDGroup_Map_Len, 			/*inquiry mp_length */
 	(binaryfunc)BPy_IDGroup_Map_GetItem,		/*binaryfunc mp_subscript */
 	(objobjargproc)BPy_IDGroup_Map_SetItem,	/*objobjargproc mp_ass_subscript */
 };
@@ -638,12 +638,12 @@ static PyGetSetDef BPy_IDArray_getseters[] = {
 	{NULL, NULL, NULL, NULL, NULL},
 };
 
-int BPy_IDArray_Len(BPy_IDArray *self)
+Py_ssize_t BPy_IDArray_Len(BPy_IDArray *self)
 {
 	return self->prop->len;
 }
 
-PyObject *BPy_IDArray_GetItem(BPy_IDArray *self, int index)
+PyObject *BPy_IDArray_GetItem(BPy_IDArray *self, Py_ssize_t index)
 {
 	if (index < 0 || index >= self->prop->len)
 		return EXPP_ReturnPyObjError( PyExc_IndexError,
@@ -661,7 +661,7 @@ PyObject *BPy_IDArray_GetItem(BPy_IDArray *self, int index)
 				"invalid/corrupt array type!");
 }
 
-int BPy_IDArray_SetItem(BPy_IDArray *self, int index, PyObject *val)
+int BPy_IDArray_SetItem(BPy_IDArray *self, Py_ssize_t index, PyObject *val)
 {
 	int i;
 	float f;
@@ -698,7 +698,7 @@ int BPy_IDArray_SetItem(BPy_IDArray *self, int index, PyObject *val)
 }
 
 static PySequenceMethods BPy_IDArray_Seq = {
-	(inquiry) BPy_IDArray_Len,			/* inquiry sq_length */
+	(lenfunc) BPy_IDArray_Len,			/* inquiry sq_length */
 	0,									/* binaryfunc sq_concat */
 	0,									/* intargfunc sq_repeat */
 	(intargfunc)BPy_IDArray_GetItem,	/* intargfunc sq_item */
