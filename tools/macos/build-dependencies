@@ -26,7 +26,9 @@ done
   cd "$retrofit_sources/Python-2.5.6"
   patch -p1 < "$retrofit_script_dir/python25.patch"
   ./configure --prefix="$retrofit_prefix" --disable-framework --disable-toolbox-glue
-  printf 'zlib zlibmodule.c -lz\n' > Modules/Setup.local
+  sed -i '' 's/^#zlib zlibmodule\.c -I$(prefix)\/include -L$(exec_prefix)\/lib -lz$/zlib zlibmodule.c -I$(prefix)\/include -L$(exec_prefix)\/lib -lz/' Modules/Setup
+  rm -f Modules/config.c
+  make Modules/config.c
   make -j"$retrofit_jobs"
   make install
   "$retrofit_prefix/bin/python2.5" -c 'import sys, math, zlib, xml.parsers.expat; assert sys.version_info[:2] == (2, 5); assert zlib.decompress(zlib.compress("native")) == "native"; print sys.version'
