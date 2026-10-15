@@ -47,6 +47,28 @@ assert len(Mathutils.Euler(1.0, 2.0, 3.0)) == 3
 assert len(Mathutils.Quaternion(1.0, 0.0, 0.0, 0.0)) == 4
 matrix = Mathutils.Matrix([1, 0, 0], [0, 1, 0], [0, 0, 1])
 assert len(matrix) == 9
+
+quat_a = Mathutils.Quaternion(1.0, 2.0, 3.0, 4.0)
+quat_b = Mathutils.Quaternion(5.0, 6.0, 7.0, 8.0)
+assert abs(quat_a * quat_b - 70.0) < 1e-6
+assert abs(quat_a * quat_a - 30.0) < 1e-6
+assert list(quat_a * 2) == [2.0, 4.0, 6.0, 8.0]
+assert list(2 * quat_a) == [2.0, 4.0, 6.0, 8.0]
+rotated = Mathutils.Quaternion(1.0, 0.0, 0.0, 0.0) * Mathutils.Vector(1.0, 2.0, 3.0)
+assert list(rotated) == [1.0, 2.0, 3.0]
+try:
+    quat_a * Mathutils.Vector(1.0, 2.0)
+except TypeError:
+    pass
+else:
+    raise AssertionError('Quaternion multiplication accepted a 2D vector')
+try:
+    quat_a * 'invalid'
+except TypeError:
+    pass
+else:
+    raise AssertionError('Quaternion multiplication accepted a string')
+
 scene = Scene.GetCurrent()
 assert len(scene.objects) > 0
 scene.properties['native_size_check'] = [1, 2, 3]
