@@ -358,6 +358,10 @@ IF(BUILD_TESTING AND APPLE)
     -DTEST_MARKER=NATIVE_TIFF_PASS:
     -P ${CMAKE_SOURCE_DIR}/tools/macos/tests/python-smoke.cmake)
   ADD_TEST(NAME packed_file_cleanup COMMAND packed_file_check_test)
+  ADD_EXECUTABLE(vpaint_color_test source/blender/src/test/vpaint_color_test.c
+    source/blender/src/vpaint_color.c)
+  TARGET_INCLUDE_DIRECTORIES(vpaint_color_test PRIVATE source/blender/src)
+  ADD_TEST(NAME vpaint_color COMMAND vpaint_color_test)
   ADD_TEST(NAME freetype_failure COMMAND freetype_failure_test ${CMAKE_SOURCE_DIR}/release/datafiles/bfont.ttf)
   ADD_TEST(NAME font_error_roundtrip COMMAND ${CMAKE_COMMAND}
     -DBLENDER_EXECUTABLE=$<TARGET_FILE:blender> -DSOURCE_ROOT=${CMAKE_SOURCE_DIR}
