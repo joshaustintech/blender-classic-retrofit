@@ -72,6 +72,7 @@
 
 /* own includes */
 #include "zbuf.h"
+#include "zbuf_depth.h"
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 /* defined in pipeline.c, is hardcopy of active dynamic allocated Render */
@@ -382,7 +383,7 @@ static void zbuffillAc4(ZSpan *zspan, int zvlnr, float *v1, float *v2, float *v3
 			zverg-= zspan->polygon_offset;
 			
 			while(x>=0) {
-				if( (int)zverg < *rz) {
+				if(zbuf_depth_to_int(zverg) < *rz) {
 //					int i= zvlnr & 3;
 					
 					apn= ap;
@@ -1072,8 +1073,9 @@ static void zbuffillGLinv4(ZSpan *zspan, int zvlnr, float *v1, float *v2, float 
 			x= sn2-sn1;
 			
 			while(x>=0) {
-				if( (int)zverg > *rz || *rz==0x7FFFFFFF) {
-					*rz= (int)zverg;
+				int zvergi= zbuf_depth_to_int(zverg);
+				if(zvergi > *rz || *rz==0x7FFFFFFF) {
+					*rz= zvergi;
 					*rp= zvlnr;
 				}
 				zverg+= zxd;
@@ -1175,8 +1177,9 @@ static void zbuffillGL4(ZSpan *zspan, int zvlnr, float *v1, float *v2, float *v3
 			x= sn2-sn1;
 			
 			while(x>=0) {
-				if( (int)zverg < *rz) {
-					*rz= (int)zverg;
+				int zvergi= zbuf_depth_to_int(zverg);
+				if(zvergi < *rz) {
+					*rz= zvergi;
 					*rp= zvlnr;
 				}
 				zverg+= zxd;
@@ -1288,7 +1291,7 @@ static void zbuffillGL_onlyZ(ZSpan *zspan, int zvlnr, float *v1, float *v2, floa
 			x= sn2-sn1;
 			
 			while(x>=0) {
-				int zvergi= (int)zverg;
+				int zvergi= zbuf_depth_to_int(zverg);
 				/* option: maintain two depth values, closest and 2nd closest */
 				if(zvergi < *rz) {
 					if(rectzofs1) *rz1= *rz;

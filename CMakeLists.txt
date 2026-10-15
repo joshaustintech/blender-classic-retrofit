@@ -362,6 +362,10 @@ IF(BUILD_TESTING AND APPLE)
     source/blender/src/vpaint_color.c)
   TARGET_INCLUDE_DIRECTORIES(vpaint_color_test PRIVATE source/blender/src)
   ADD_TEST(NAME vpaint_color COMMAND vpaint_color_test)
+  ADD_EXECUTABLE(zbuf_depth_test source/blender/render/intern/test/zbuf_depth_test.c
+    source/blender/render/intern/source/zbuf_depth.c)
+  TARGET_INCLUDE_DIRECTORIES(zbuf_depth_test PRIVATE source/blender/render/intern/source)
+  ADD_TEST(NAME zbuf_depth COMMAND zbuf_depth_test)
   ADD_TEST(NAME freetype_failure COMMAND freetype_failure_test ${CMAKE_SOURCE_DIR}/release/datafiles/bfont.ttf)
   ADD_TEST(NAME font_error_roundtrip COMMAND ${CMAKE_COMMAND}
     -DBLENDER_EXECUTABLE=$<TARGET_FILE:blender> -DSOURCE_ROOT=${CMAKE_SOURCE_DIR}
