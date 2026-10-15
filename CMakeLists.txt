@@ -358,6 +358,9 @@ IF(BUILD_TESTING AND APPLE)
     -DTEST_MARKER=NATIVE_TIFF_PASS:
     -P ${CMAKE_SOURCE_DIR}/tools/macos/tests/python-smoke.cmake)
   ADD_TEST(NAME packed_file_cleanup COMMAND packed_file_check_test)
+  ADD_TEST(NAME name_boundary COMMAND ${CMAKE_COMMAND}
+    -DBLENDER_EXECUTABLE=$<TARGET_FILE:blender> -DSOURCE_ROOT=${CMAKE_SOURCE_DIR}
+    -P ${CMAKE_SOURCE_DIR}/tools/macos/tests/name-boundary.cmake)
   ADD_TEST(NAME packed_file_roundtrip COMMAND ${CMAKE_COMMAND}
     -DBLENDER_EXECUTABLE=$<TARGET_FILE:blender> -DSOURCE_ROOT=${CMAKE_SOURCE_DIR}
     -P ${CMAKE_SOURCE_DIR}/tools/macos/tests/packed-file-roundtrip.cmake)
