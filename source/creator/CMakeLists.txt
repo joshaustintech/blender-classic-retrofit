@@ -286,7 +286,9 @@ SETUP_LIBLINKS(blender)
 
 IF(BUILD_TESTING AND APPLE)
   ADD_EXECUTABLE(packed_file_check_test ../blender/blenkernel/test/packed_file_check_test.c ${CMAKE_CURRENT_BINARY_DIR}/dna.c)
+  ADD_EXECUTABLE(freetype_failure_test ../blender/blenkernel/test/freetype_failure_test.c ${CMAKE_CURRENT_BINARY_DIR}/dna.c)
   ADD_DEPENDENCIES(packed_file_check_test makesdna)
+  ADD_DEPENDENCIES(freetype_failure_test makesdna)
   TARGET_INCLUDE_DIRECTORIES(packed_file_check_test PRIVATE
     ../blender/blenkernel
     ../blender/makesdna
@@ -295,5 +297,14 @@ IF(BUILD_TESTING AND APPLE)
     ../../intern/guardedalloc
   )
   TARGET_LINK_LIBRARIES(packed_file_check_test ${BLENDER_SORTED_LIBS})
+  TARGET_INCLUDE_DIRECTORIES(freetype_failure_test PRIVATE
+    ../blender/blenkernel
+    ../blender/makesdna
+    ../blender/blenlib
+    ../blender/include
+    ../../intern/guardedalloc
+  )
+  TARGET_LINK_LIBRARIES(freetype_failure_test ${BLENDER_SORTED_LIBS})
   SETUP_LIBLINKS(packed_file_check_test)
+  SETUP_LIBLINKS(freetype_failure_test)
 ENDIF()

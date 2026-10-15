@@ -302,9 +302,11 @@ int objchr_to_ftvfontdata(VFont *vfont, FT_ULong charcode)
 			tf->pf->size,
 			0,
 			&face);			
+		if (err) return FALSE;
 	}
-	else
-		err= TRUE;
+	else {
+		return FALSE;
+	}
 		
 	// Read the char
 	freetypechar_to_vchar(face, charcode, vfont->data);
@@ -513,7 +515,10 @@ int BLI_vfontchar_from_freetypefont(VFont *vfont, unsigned long character)
 
 	// Load the character
 	success = objchr_to_ftvfontdata(vfont, character);
-	if(success == FALSE) return FALSE;
+	if(success == FALSE) {
+		FT_Done_FreeType(library);
+		return FALSE;
+	}
 
 	// Free Freetype
 	FT_Done_FreeType(library);
