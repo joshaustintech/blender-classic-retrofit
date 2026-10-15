@@ -541,6 +541,7 @@ void BPY_Err_Handle( char *script_name )
 			Py_DECREF(v);
 		}
 		Py_DECREF( tb );
+		PySys_SetObject( "last_traceback", Py_None );
 	}
 
 	return;

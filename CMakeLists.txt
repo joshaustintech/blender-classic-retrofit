@@ -368,4 +368,7 @@ IF(BUILD_TESTING AND APPLE)
   ADD_TEST(NAME packed_file_roundtrip COMMAND ${CMAKE_COMMAND}
     -DBLENDER_EXECUTABLE=$<TARGET_FILE:blender> -DSOURCE_ROOT=${CMAKE_SOURCE_DIR}
     -P ${CMAKE_SOURCE_DIR}/tools/macos/tests/packed-file-roundtrip.cmake)
+  ADD_TEST(NAME python_traceback_lifetime COMMAND ${CMAKE_COMMAND}
+    -DBLENDER_EXECUTABLE=$<TARGET_FILE:blender> -DSOURCE_ROOT=${CMAKE_SOURCE_DIR}
+    -P ${CMAKE_SOURCE_DIR}/tools/macos/tests/python-traceback-lifetime.cmake)
 ENDIF()
